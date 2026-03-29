@@ -5,11 +5,14 @@
   --radius: 0.45rem;
 
   /* Core brand palette */
-  --brand-blue: #24364c;
-  --brand-amber: #e09643;
-  --brand-emerald: #5f8f65;
-  --brand-lilac: #d43c33;
-  --brand-slate: #24364c;
+  --brand-navy: #24364c;
+  --brand-light-gray: #d4d4d4;
+  --brand-red: #d43c33;
+  --brand-orange: #e09643;
+  --brand-blue: var(--brand-navy);
+  --brand-amber: var(--brand-orange);
+  --brand-lilac: var(--brand-red);
+  --brand-slate: var(--brand-navy);
 
   /* Neutral scale for surfaces */
   --neutral-25: #fffaf5;
@@ -123,11 +126,11 @@
   --color-button-selected-border: var(--color-button-primary-border);
 
   /* Premium dashboard surfaces */
-  --premium-gradient: radial-gradient(120% 120% at 20% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
-    radial-gradient(120% 120% at 80% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
-    linear-gradient(180deg, #f9fbff 0%, #f3f6ff 100%);
-  --premium-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 248, 255, 0.96) 100%);
-  --premium-topbar-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 248, 255, 0.94) 100%);
+  --premium-gradient: radial-gradient(120% 120% at 18% 0%, rgba(224, 150, 67, 0.16) 0%, transparent 58%),
+    radial-gradient(120% 120% at 82% 0%, rgba(212, 60, 51, 0.1) 0%, transparent 54%),
+    linear-gradient(180deg, #fffaf6 0%, #f7f2ec 100%);
+  --premium-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 243, 236, 0.96) 100%);
+  --premium-topbar-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(249, 243, 236, 0.94) 100%);
   --premium-input-gradient: linear-gradient(
     180deg,
     color-mix(in srgb, var(--card) 92%, white 8%),
@@ -138,18 +141,18 @@
     color-mix(in srgb, var(--card) 88%, white 12%),
     color-mix(in srgb, var(--card) 62%, var(--background) 38%)
   );
-  --premium-border: rgba(15, 23, 42, 0.08);
-  --premium-shadow: 0 18px 45px -30px rgba(15, 23, 42, 0.45);
+  --premium-border: rgba(36, 54, 76, 0.1);
+  --premium-shadow: 0 18px 45px -30px rgba(36, 54, 76, 0.24);
   --premium-glow: 0 0 0 1px rgba(255, 255, 255, 0.75);
   --premium-hairline: rgba(255, 255, 255, 0.65);
   --premium-inset: 0 1px 0 rgba(255, 255, 255, 0.45) inset;
 
   /* Chart defaults */
-  --chart-1: #2563eb;
-  --chart-2: #f97316;
-  --chart-3: #16a34a;
-  --chart-4: #facc15;
-  --chart-5: #8b5cf6;
+  --chart-1: #24364c;
+  --chart-2: #d43c33;
+  --chart-3: #e09643;
+  --chart-4: #d4d4d4;
+  --chart-5: #b85e3e;
 }
 
 .dark {

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import HeroDotAnimation from "@/components/site/hero-dot-animation";
 import { brand, foundingTeam } from "@/config/brand";
 
 export function Footer() {
@@ -27,7 +28,7 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-[#24364C]/10 bg-[#102033] text-white"
+      className="border-t border-[#24364C]/10 bg-[#24364C] text-white"
       aria-label="Site footer"
     >
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -50,6 +51,7 @@ export function Footer() {
             </Link>
             <p className="max-w-md text-sm text-white/72">{brand.blurb}</p>
             <p className="font-display text-2xl text-white">{brand.heroHeadline}</p>
+            <HeroDotAnimation className="w-full max-w-[280px]" lightText />
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {columns.map((column) => (

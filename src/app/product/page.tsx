@@ -111,6 +111,7 @@ export default function ProductPage() {
       </PageSection>
 
       <PageSection
+        id="pricing"
         title="Pricing preview"
         subtitle="A reusable pricing component integrated into the current product surface."
       >

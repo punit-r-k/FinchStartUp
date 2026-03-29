@@ -275,7 +275,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-10 pb-24 sm:px-6">
-        <div className="rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(135deg,rgba(36,54,76,0.98),rgba(25,39,58,0.92))] p-8 text-white shadow-[0_28px_84px_rgba(36,54,76,0.18)] lg:p-10">
+        <div className="rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(135deg,rgba(36,54,76,0.98),rgba(36,54,76,0.9))] p-8 text-white shadow-[0_28px_84px_rgba(36,54,76,0.18)] lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div className="max-w-3xl">
               <span className="inline-flex items-center rounded-md border border-white/12 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/66">

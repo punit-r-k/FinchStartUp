@@ -7,18 +7,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  ArrowRight,
-  Bot,
-  Check,
-  Chrome,
-  GraduationCap,
-  ShieldCheck,
-  Target,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import WaitlistForm from "@/components/site/waitlist-form";
-import HeroDotAnimation from "@/components/site/hero-dot-animation";
+import ShareSiteButton from "@/components/site/share-site-button";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
 
@@ -31,22 +23,18 @@ const STATS = [
   {
     value: "50-200",
     label: "applications students often send in one cycle",
-    icon: Target,
   },
   {
     value: "< 60s",
     label: "from repetitive application work to tailored autofill",
-    icon: Bot,
   },
   {
     value: "3 ATS",
     label: "Greenhouse, Lever, and Workday workflows supported",
-    icon: Chrome,
   },
   {
     value: "Final review",
     label: "users stay in control before anything gets submitted",
-    icon: ShieldCheck,
   },
 ] as const;
 
@@ -55,25 +43,21 @@ const STEPS = [
     title: "Build a stronger starting point",
     description:
       "Finch analyzes your background and turns scattered experience into a richer candidate profile.",
-    icon: GraduationCap,
   },
   {
     title: "Target higher-signal internships",
     description:
       "Instead of spraying applications everywhere, Finch helps you focus on roles that fit your profile and interview odds.",
-    icon: Target,
   },
   {
     title: "Tailor in seconds",
     description:
       "Role-specific resumes, cover letters, and autofill steps compress repetitive work without flattening quality.",
-    icon: Bot,
   },
   {
     title: "Stop before submit",
     description:
       "Finch brings you to the final review page so you keep full control over what gets sent.",
-    icon: ShieldCheck,
   },
 ] as const;
 
@@ -130,6 +114,37 @@ const FAQ = [
   },
 ] as const;
 
+const PRIMARY_ACTIONS = [
+  {
+    title: "Sign up",
+    description: "Join the Finch waitlist for early access and founder follow-up.",
+    href: `mailto:${brand.primaryEmail}?subject=Finch%20waitlist`,
+    label: "Join waitlist",
+    variant: "landingPrimary" as const,
+  },
+  {
+    title: "Purchase / subscribe",
+    description: "See the pricing preview and subscription direction for the product.",
+    href: "/product#pricing",
+    label: "View pricing",
+    variant: "outline" as const,
+  },
+  {
+    title: "Download app / Chrome extension",
+    description: "Request extension access while the student launch is still rolling out.",
+    href: `mailto:${brand.primaryEmail}?subject=Finch%20Chrome%20extension%20access`,
+    label: "Request extension access",
+    variant: "outline" as const,
+  },
+  {
+    title: "Follow on social",
+    description: "Social channels are opening soon, but launch updates already route through Finch directly.",
+    href: `mailto:${brand.primaryEmail}?subject=Finch%20social%20updates`,
+    label: "Get launch updates",
+    variant: "outline" as const,
+  },
+] as const;
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#f7f2ec_0%,#f6efe8_48%,#fff9f5_100%)] text-[#24364C]">
@@ -151,7 +166,6 @@ export default function Home() {
               materials, and move from applications to interviews with more
               signal and less grind.
             </p>
-            <HeroDotAnimation className="mx-auto mt-8 w-full max-w-[300px] sm:max-w-[360px]" />
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
                 <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
@@ -202,10 +216,7 @@ export default function Home() {
               key={step.title}
               className="rounded-[10px] border border-white/70 bg-white/74 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)]"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(212,60,51,0.14),rgba(224,150,67,0.18))] text-[#D43C33]">
-                <step.icon className="h-5 w-5" />
-              </div>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/46">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/46">
                 Step {index + 1}
               </p>
               <h3 className="mt-3 text-xl font-semibold text-[#24364C]">{step.title}</h3>
@@ -291,17 +302,14 @@ export default function Home() {
             <div className="mt-8 grid gap-4">
               {[
                 {
-                  icon: Chrome,
                   title: "Chrome extension workflow",
                   text: "Finch detects supported application opportunities and prepares the right materials at the moment they are needed.",
                 },
                 {
-                  icon: Bot,
                   title: "AI-assisted tailoring",
                   text: "The product helps generate stronger, role-specific documents while preserving user control and review.",
                 },
                 {
-                  icon: Target,
                   title: "Outcome-driven guidance",
                   text: "Every major workflow centers on precision, fit, and interview probability rather than vanity metrics.",
                 },
@@ -310,12 +318,7 @@ export default function Home() {
                   key={item.title}
                   className="rounded-[10px] border border-[#24364C]/10 bg-white/80 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.08)]"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(212,60,51,0.12),rgba(224,150,67,0.16))] text-[#D43C33]">
-                      <item.icon className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-lg font-semibold text-[#24364C]">{item.title}</h3>
-                  </div>
+                  <h3 className="text-lg font-semibold text-[#24364C]">{item.title}</h3>
                   <p className="mt-4 text-sm leading-6 text-[#24364C]/72">{item.text}</p>
                 </article>
               ))}
@@ -353,6 +356,55 @@ export default function Home() {
             </AccordionItem>
           ))}
         </Accordion>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div className="rounded-[12px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,245,236,0.9))] p-8 shadow-[0_28px_84px_rgba(36,54,76,0.08)]">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
+              Primary actions
+            </span>
+            <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
+              The website now covers Finch&apos;s primary calls to action.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-[#24364C]/72">
+              Stop guessing and start applying with strategy. Finch helps you target the right
+              internships, tailor your applications intelligently, and increase your interview rate
+              without spending more time applying.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {PRIMARY_ACTIONS.map((action) => (
+              <article
+                key={action.title}
+                className="flex h-full flex-col rounded-[10px] border border-[#24364C]/10 bg-white/82 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33]">
+                  {action.title}
+                </p>
+                <p className="mt-3 flex-1 text-sm leading-6 text-[#24364C]/72">
+                  {action.description}
+                </p>
+                <Button asChild variant={action.variant} className="mt-5 rounded-md">
+                  {action.href.startsWith("mailto:") ? (
+                    <a href={action.href}>{action.label}</a>
+                  ) : (
+                    <Link href={action.href}>{action.label}</Link>
+                  )}
+                </Button>
+              </article>
+            ))}
+            <article className="flex h-full flex-col rounded-[10px] border border-[#24364C]/10 bg-white/82 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)] md:col-span-2 xl:col-span-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33]">
+                Share with friends
+              </p>
+              <p className="mt-3 flex-1 text-sm leading-6 text-[#24364C]/72">
+                Share Finch with classmates or friends who are tired of low-signal application volume.
+              </p>
+              <ShareSiteButton className="mt-5 rounded-md" />
+            </article>
+          </div>
+        </div>
       </section>
 
       <section id="waitlist" className="pb-24">
