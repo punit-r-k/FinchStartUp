@@ -8,7 +8,11 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
 
+<<<<<<< Updated upstream
 import ShareSiteButton from "@/components/site/share-site-button";
+=======
+import HeroDotAnimation from "@/components/site/hero-dot-animation";
+>>>>>>> Stashed changes
 import WaitlistForm from "@/components/site/waitlist-form";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
@@ -129,6 +133,7 @@ export default function Home() {
                 ATS-ready resumes, better-fit roles, and a faster path from
                 search to submit.
               </p>
+              <HeroDotAnimation className="mx-auto mt-8 w-full max-w-[340px] sm:max-w-[400px]" />
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
                   <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
