@@ -22,44 +22,44 @@ export function PricingWithChart() {
   return (
     <div className="mx-auto max-w-6xl">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h2 className="text-4xl font-extrabold tracking-tight text-[#24364C] lg:text-5xl">
           Pricing that Scales with You
         </h2>
-        <p className="text-muted-foreground mt-4 text-sm md:text-base">
+        <p className="mt-4 text-sm text-[#24364C]/70 md:text-base">
           Choose the right plan to unlock powerful tools and insights.
           Transparent pricing built for modern teams.
         </p>
       </div>
 
-      <div className="bg-background grid rounded-xl border md:grid-cols-6">
-        <div className="flex flex-col justify-between border-b p-6 md:col-span-2 md:border-r md:border-b-0">
+      <div className="grid rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(249,243,236,0.92))] text-[#24364C] shadow-[0_20px_56px_rgba(36,54,76,0.08)] md:grid-cols-6">
+        <div className="flex flex-col justify-between border-b border-[#24364C]/10 p-6 md:col-span-2 md:border-r md:border-b-0">
           <div className="space-y-4">
             <div>
               <h3 className="inline rounded-[2px] p-1 text-xl font-semibold">
                 Free
               </h3>
-              <span className="my-3 block text-3xl font-bold text-purple-600">
+              <span className="my-3 block text-3xl font-bold text-[#D43C33]">
                 $0
               </span>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-[#24364C]/72">
                 Best for testing and understanding
               </p>
             </div>
 
-            <Button asChild variant="outline" className="w-full">
+            <Button asChild variant="outline" className="w-full border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C]">
               <a href="#waitlist">Get Started</a>
             </Button>
 
-            <div className="bg-border my-6 h-px w-full" />
+            <div className="my-6 h-px w-full bg-[#24364C]/12" />
 
-            <ul className="text-muted-foreground space-y-3 text-sm">
+            <ul className="space-y-3 text-sm text-[#24364C]/74">
               {[
                 "Basic analytics dashboard",
                 "5GB cloud storage",
                 "Email and chat support",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-purple-600" />
+                  <CheckCircleIcon className="h-4 w-4 text-[#D43C33]" />
                   {item}
                 </li>
               ))}
@@ -71,21 +71,21 @@ export function PricingWithChart() {
           <div className="flex flex-col justify-between space-y-6">
             <div>
               <h3 className="text-xl font-semibold">Pro Monthly Package</h3>
-              <span className="my-3 block text-3xl font-bold text-purple-600">
+              <span className="my-3 block text-3xl font-bold text-[#D43C33]">
                 $299
               </span>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-[#24364C]/72">
                 Perfect for small businesses and startups
               </p>
             </div>
-            <div className="bg-muted/30 h-fit w-full rounded-lg border p-2">
+            <div className="h-fit w-full rounded-[10px] border border-[#24364C]/10 bg-white/72 p-2 shadow-[0_14px_36px_rgba(36,54,76,0.06)]">
               <InterestChart />
             </div>
           </div>
 
           <div className="relative w-full">
             <div className="text-sm font-medium">Everything in Free plus:</div>
-            <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
+            <ul className="mt-4 space-y-3 text-sm text-[#24364C]/74">
               {[
                 "Unlimited access to all tools",
                 "Priority customer support",
@@ -99,7 +99,7 @@ export function PricingWithChart() {
                 "Regular updates with new features",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-purple-500" />
+                  <CheckCircleIcon className="h-4 w-4 text-[#E09643]" />
                   {item}
                 </li>
               ))}
@@ -108,11 +108,11 @@ export function PricingWithChart() {
             <div className="mt-10 grid w-full grid-cols-2 gap-2.5">
               <Button
                 asChild
-                className="bg-purple-600 text-white hover:bg-purple-700 hover:text-white"
+                variant="landingPrimary"
               >
                 <a href="#waitlist">Get Started</a>
               </Button>
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C]">
                 <a href="#waitlist">Start free trial</a>
               </Button>
             </div>
@@ -142,15 +142,15 @@ function InterestChart() {
   const chartConfig = {
     interest: {
       label: "Interest",
-      color: "var(--chart-4)",
+      color: "#E09643",
     },
   } satisfies ChartConfig;
 
   return (
-    <Card className="gap-0 border-border/70 py-0 shadow-none">
-      <CardHeader className="space-y-0 border-b p-3">
-        <CardTitle className="text-lg">Plan Popularity</CardTitle>
-        <CardDescription className="text-xs">
+    <Card className="gap-0 border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(250,245,239,0.96))] py-0 shadow-none">
+      <CardHeader className="space-y-0 border-b border-[#24364C]/10 p-3">
+        <CardTitle className="text-lg text-[#24364C]">Plan Popularity</CardTitle>
+        <CardDescription className="text-xs text-[#24364C]/66">
           Monthly trend of people considering this plan.
         </CardDescription>
       </CardHeader>

@@ -172,10 +172,7 @@ export default function Home() {
                     key={stat.value}
                     className="rounded-[10px] border border-[#24364C]/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,241,233,0.9))] p-6 text-left shadow-[0_18px_48px_rgba(36,54,76,0.08)]"
                   >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(212,60,51,0.14),rgba(224,150,67,0.18))] text-[#D43C33]">
-                      <stat.icon className="h-5 w-5" />
-                    </span>
-                    <p className="mt-5 font-display text-3xl text-[#24364C]">{stat.value}</p>
+                    <p className="font-display text-3xl text-[#24364C]">{stat.value}</p>
                     <p className="mt-3 text-sm leading-6 text-[#24364C]/70">{stat.label}</p>
                   </article>
                 ))}
