@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isProduction ? "" : " 'unsafe-eval'"}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "connect-src 'self'",
@@ -13,6 +15,9 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
   experimental: {
     optimizePackageImports: [
       "lucide-react",
@@ -39,7 +44,7 @@ const nextConfig: NextConfig = {
       { key: "Content-Security-Policy", value: csp },
     ];
 
-    if (process.env.NODE_ENV === "production") {
+    if (isProduction) {
       headers.push({
         key: "Strict-Transport-Security",
         value: "max-age=31536000; includeSubDomains; preload",

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Accordion,
@@ -9,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
 
+import ShareSiteButton from "@/components/site/share-site-button";
 import WaitlistForm from "@/components/site/waitlist-form";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
@@ -60,19 +60,25 @@ const FEATURE_SHOWCASE = [
     eyebrow: "AI resume builder",
     title: "Craft a tailored resume for every role",
     body: "Generate role-specific resume versions, improve ATS alignment, and close keyword gaps before you submit.",
-    image: "/finch/product-1.png",
+    ctaLabel: "Explore the product",
+    ctaHref: "/product",
+    ctaKind: "link",
   },
   {
     eyebrow: "Job matches",
     title: "Get matched to relevant jobs, personalized to you",
     body: "Set your preferences once and discover higher-fit opportunities instead of searching endlessly across job boards.",
-    image: "/finch/product-2.png",
+    ctaLabel: "Get launch updates",
+    ctaHref: `mailto:${brand.primaryEmail}?subject=Finch%20launch%20updates`,
+    ctaKind: "anchor",
   },
   {
     eyebrow: "Autofill applications",
     title: "Autofill repetitive job application questions",
     body: "Install the Finch browser extension and finish repetitive forms in seconds with profile-aware answers.",
-    image: "/finch/product-3.png",
+    ctaLabel: "Request extension access",
+    ctaHref: `mailto:${brand.primaryEmail}?subject=Finch%20Chrome%20extension%20access`,
+    ctaKind: "anchor",
   },
 ] as const;
 
@@ -108,6 +114,7 @@ export default function Home() {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#f7f2ec_0%,#f6efe8_48%,#fff9f5_100%)] text-[#24364C] transition-colors duration-300 dark:bg-[linear-gradient(180deg,#121d2b_0%,#172433_46%,#1b2b3f_100%)] dark:text-[#fff7ef]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.28),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.16),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.36),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.07),transparent_32%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.16),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.14),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.05),transparent_26%),radial-gradient(circle_at_bottom,rgba(224,150,67,0.08),transparent_32%)]" />
+
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 pb-18 pt-28 sm:px-6 sm:pt-32 lg:pb-22 lg:pt-36">
           <div className="relative z-10">
@@ -137,18 +144,26 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-[12px] border border-white/70 bg-white/72 p-4 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/72 dark:shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-5">
-              <div className="relative aspect-[1.9] overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] dark:border-white/10 dark:bg-[#152234]">
-                <Image
-                  src="/finch/product-5.png"
-                  alt="Finch workflow preview"
-                  fill
-                  priority
-                  sizes="(max-width: 1023px) 100vw, 960px"
-                  className="object-cover object-top"
-                />
+
+            <div className="mx-auto mt-12 max-w-5xl rounded-[12px] border border-white/70 bg-white/72 p-6 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/72 dark:shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-7">
+              <div className="grid gap-4 md:grid-cols-3">
+                {[
+                  "ATS-ready materials without the usual rewrite loop.",
+                  "Cleaner job matching built around better-fit roles.",
+                  "Final-review control before anything gets submitted.",
+                ].map((line) => (
+                  <article
+                    key={line}
+                    className="rounded-[10px] border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,241,233,0.9))] p-5 text-left shadow-[0_18px_48px_rgba(36,54,76,0.06)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(30,45,65,0.96),rgba(22,35,51,0.92))] dark:shadow-[0_18px_48px_rgba(0,0,0,0.2)]"
+                  >
+                    <p className="text-sm leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/74">
+                      {line}
+                    </p>
+                  </article>
+                ))}
               </div>
             </div>
+
             <div className="mx-auto mt-6 max-w-6xl rounded-[12px] border border-white/70 bg-white/72 p-4 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/72 dark:shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-5">
               <div className="grid gap-4 lg:grid-cols-4">
                 {STATS.map((stat) => (
@@ -156,8 +171,12 @@ export default function Home() {
                     key={stat.value}
                     className="rounded-[10px] border border-[#24364C]/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,241,233,0.9))] p-6 text-left shadow-[0_18px_48px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(30,45,65,0.96),rgba(22,35,51,0.92))] dark:shadow-[0_18px_48px_rgba(0,0,0,0.24)]"
                   >
-                    <p className="font-display text-3xl text-[#24364C] dark:text-[#fff7ef]">{stat.value}</p>
-                    <p className="mt-3 text-sm leading-6 text-[#24364C]/70 dark:text-[#fff7ef]/70">{stat.label}</p>
+                    <p className="font-display text-3xl text-[#24364C] dark:text-[#fff7ef]">
+                      {stat.value}
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-[#24364C]/70 dark:text-[#fff7ef]/70">
+                      {stat.label}
+                    </p>
                   </article>
                 ))}
               </div>
@@ -180,36 +199,23 @@ export default function Home() {
             submitted.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-          <div className="grid gap-4">
-            {WORKFLOW_STEPS.map((step, index) => (
-              <article
-                key={step.title}
-                className="rounded-[10px] border border-white/70 bg-white/74 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
-                  Step {index + 1}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold text-[#24364C] dark:text-[#fff7ef]">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-[#24364C]/72 dark:text-[#fff7ef]/72">
-                  {step.description}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div className="overflow-hidden rounded-[12px] border border-white/70 bg-white/74 p-4 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]">
-            <div className="relative aspect-[1.08] overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] dark:border-white/10 dark:bg-[#152234]">
-              <Image
-                src="/finch/product-4.png"
-                alt="Finch application workflow"
-                fill
-                sizes="(max-width: 1023px) 100vw, 52vw"
-                className="object-cover object-top"
-              />
-            </div>
-          </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {WORKFLOW_STEPS.map((step, index) => (
+            <article
+              key={step.title}
+              className="rounded-[10px] border border-white/70 bg-white/74 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
+                Step {index + 1}
+              </p>
+              <h3 className="mt-3 text-2xl font-semibold text-[#24364C] dark:text-[#fff7ef]">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+                {step.description}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -228,34 +234,28 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-10 space-y-6">
-          {FEATURE_SHOWCASE.map((feature, index) => (
+          {FEATURE_SHOWCASE.map((feature) => (
             <article
               key={feature.title}
-              className="grid gap-6 rounded-[12px] border border-white/70 bg-white/76 p-5 shadow-[0_22px_60px_rgba(36,54,76,0.08)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)] lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:p-6"
+              className="rounded-[12px] border border-white/70 bg-white/76 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)] lg:p-7"
             >
-              <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
-                <span className="inline-flex items-center rounded-md border border-[#D43C33]/14 bg-[#fff6f1] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33] dark:border-[#E09643]/16 dark:bg-[#233247] dark:text-[#E09643]">
-                  {feature.eyebrow}
-                </span>
-                <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-[2rem]">
-                  {feature.title}
-                </h3>
-                <p className="mt-4 max-w-xl text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
-                  {feature.body}
-                </p>
-              </div>
-              <div className={index % 2 === 1 ? "lg:order-1" : undefined}>
-                <div className="overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] p-3 dark:border-white/10 dark:bg-[#152234]">
-                  <div className="relative aspect-[1.32] overflow-hidden rounded-[8px]">
-                    <Image
-                      src={feature.image}
-                      alt={feature.title}
-                      fill
-                      sizes="(max-width: 1023px) 100vw, 56vw"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                </div>
+              <span className="inline-flex items-center rounded-md border border-[#D43C33]/14 bg-[#fff6f1] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33] dark:border-[#E09643]/16 dark:bg-[#233247] dark:text-[#E09643]">
+                {feature.eyebrow}
+              </span>
+              <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-[2rem]">
+                {feature.title}
+              </h3>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+                {feature.body}
+              </p>
+              <div className="mt-6">
+                <Button asChild variant="outline" className="rounded-md">
+                  {feature.ctaKind === "link" ? (
+                    <Link href={feature.ctaHref}>{feature.ctaLabel}</Link>
+                  ) : (
+                    <a href={feature.ctaHref}>{feature.ctaLabel}</a>
+                  )}
+                </Button>
               </div>
             </article>
           ))}
@@ -334,17 +334,21 @@ export default function Home() {
                   team about early access, product demos, or university
                   partnership conversations.
                 </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild variant="outline" className="rounded-md">
+                    <a href={`mailto:${brand.primaryEmail}?subject=Finch%20launch%20updates`}>
+                      Get launch updates
+                    </a>
+                  </Button>
+                  <ShareSiteButton className="rounded-md" />
+                </div>
               </div>
               <div className="rounded-[10px] border border-white/80 bg-white/78 p-6 shadow-[0_20px_54px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-white/6 dark:shadow-[0_20px_54px_rgba(0,0,0,0.24)] sm:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#24364C]/54 dark:text-[#fff7ef]/54">
                   Join the waitlist
                 </p>
                 <div className="mt-5">
-                  <WaitlistForm
-                    source="home-cta"
-                    fullWidth
-                    className="w-full"
-                  />
+                  <WaitlistForm source="home-cta" fullWidth className="w-full" />
                 </div>
                 <p className="mt-5 text-sm leading-6 text-[#24364C]/66 dark:text-[#fff7ef]/66">
                   Early access requests route directly to the Finch team.

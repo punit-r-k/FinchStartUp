@@ -113,8 +113,8 @@ export function Footer() {
                 alt={`${brand.name} logo`}
                 width={156}
                 height={48}
-                className="w-[156px]"
-                style={{ height: "auto" }}
+                className="h-auto w-[156px]"
+                style={{ width: "156px", height: "auto" }}
                 priority
               />
             </Link>

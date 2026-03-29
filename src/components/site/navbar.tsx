@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import SkyToggle from "@/components/ui/sky-toggle";
 import { brand } from "@/config/brand";
 import { THEME_STORAGE_KEY, applyThemeMode, getPreferredThemeMode, type ThemeMode } from "@/lib/theme-mode";
 import { cn } from "@/lib/utils";
@@ -120,31 +121,13 @@ export function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#24364C]/12 bg-white/80 p-2.5 text-[#24364C] shadow-[0_12px_28px_rgba(36,54,76,0.08)] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)] dark:border-white/10 dark:bg-[#152234] dark:text-[#fff7ef] dark:hover:bg-[#1b2c43]"
-            onClick={toggleThemeMode}
-            aria-label={themeToggleLabel}
-            aria-pressed={themeMode === "dark"}
-            title={themeToggleLabel}
-          >
-            <span className="relative block h-5 w-5">
-              <Image
-                src="/nightMode.png"
-                alt=""
-                fill
-                className="object-contain dark:hidden"
-                sizes="20px"
-              />
-              <Image
-                src="/dayMode.png"
-                alt=""
-                fill
-                className="hidden object-contain dark:block"
-                sizes="20px"
-              />
-            </span>
-          </button>
+          <SkyToggle
+            checked={themeMode === "dark"}
+            onCheckedChange={() => toggleThemeMode()}
+            ariaLabel={themeToggleLabel}
+            className="shrink-0"
+            size={12}
+          />
           <Button asChild variant="outline" className="hidden rounded-md px-5 py-2.5 text-base sm:inline-flex">
             <Link href="/product">See product</Link>
           </Button>
