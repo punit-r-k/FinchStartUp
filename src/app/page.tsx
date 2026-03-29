@@ -130,8 +130,8 @@ export default function Home() {
                 ATS-ready resumes, better-fit roles, and a faster path from
                 search to submit.
               </p>
-              <HeroDotAnimation className="mx-auto mt-8 w-full max-w-[340px] sm:max-w-[400px]" />
-              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <HeroDotAnimation className="mx-auto mt-1 w-full max-w-[340px] sm:max-w-[400px]" />
+              <div className="mt-1 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
                   <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
                     Join waitlist
