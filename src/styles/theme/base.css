@@ -1,0 +1,267 @@
+/* Finch theme system ---------------------------------------------------- */
+
+:root {
+  /* Layout + sizing tokens */
+  --radius: 0.45rem;
+
+  /* Core brand palette */
+  --brand-blue: #24364c;
+  --brand-amber: #e09643;
+  --brand-emerald: #5f8f65;
+  --brand-lilac: #d43c33;
+  --brand-slate: #24364c;
+
+  /* Neutral scale for surfaces */
+  --neutral-25: #fffaf5;
+  --neutral-50: #f7f2ec;
+  --neutral-100: #efe3d7;
+  --neutral-200: #dfccbb;
+  --neutral-300: #c6b19d;
+  --neutral-400: #a58972;
+  --neutral-500: #7c6658;
+  --neutral-700: #4a413f;
+  --neutral-900: #1a2430;
+
+  /* Motion + shadows for depth */
+  --shadow-ambient: 0 1px 2px rgba(15, 23, 42, 0.08), 0 16px 40px -24px rgba(15, 23, 42, 0.35);
+  --duration-fast: 160ms;
+  --duration-base: 220ms;
+  --duration-slow: 360ms;
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Fluid type scale for responsive headings */
+  --step--2: clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
+  --step--1: clamp(0.83rem, 0.80rem + 0.12vw, 0.90rem);
+  --step-0: clamp(1.00rem, 0.96rem + 0.20vw, 1.13rem);
+  --step-1: clamp(1.25rem, 1.18rem + 0.30vw, 1.50rem);
+  --step-2: clamp(1.56rem, 1.46rem + 0.44vw, 1.88rem);
+  --step-3: clamp(1.95rem, 1.80rem + 0.60vw, 2.34rem);
+  --step-4: clamp(2.44rem, 2.22rem + 0.82vw, 2.93rem);
+
+  /* Default theme mirrors .theme-light */
+  --background: #f7f2ec;
+  --foreground: #24364c;
+  --card: #fffdfa;
+  --card-foreground: #24364c;
+  --popover: #fffdfa;
+  --popover-foreground: #24364c;
+  --primary: #d43c33;
+  --primary-foreground: #fff8f6;
+  --secondary: #f4e2d1;
+  --secondary-foreground: #24364c;
+  --muted: #efe5dc;
+  --muted-foreground: #5d626f;
+  --accent: #f6d9bd;
+  --accent-foreground: #24364c;
+  --danger: #d43c33;
+  --danger-foreground: #fff8f6;
+  --success: #355f42;
+  --success-foreground: #f4fffb;
+  --destructive: #d43c33;
+  --border: #dfd0c2;
+  --input: #dfd0c2;
+  --ring: #e09643;
+  --avatar-border: var(--ring);
+
+  --sidebar: #fffdfa;
+  --sidebar-foreground: #24364c;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #f5e6d9;
+  --sidebar-accent-foreground: #24364c;
+  --sidebar-border: #dfd0c2;
+  --sidebar-ring: var(--ring);
+  --button-subtle-foreground: #24364c;
+  --button-subtle-foreground-hover: #1a2533;
+  --button-subtle-border: rgba(36, 54, 76, 0.22);
+  --button-solid-outline: rgba(255, 236, 219, 0.72);
+  --color-button-focus-ring: color-mix(in srgb, var(--button-subtle-foreground) 78%, var(--ring) 22%);
+  --color-button-focus-offset: color-mix(in srgb, var(--card) 88%, var(--background) 12%);
+  --color-button-primary-bg: var(--primary);
+  --color-button-primary-bg-hover: var(--primary);
+  --color-button-primary-bg-active: color-mix(in srgb, var(--primary) 94%, #0f172a 6%);
+  --color-button-primary-fg: var(--primary-foreground);
+  --color-button-primary-border: color-mix(in srgb, var(--primary) 42%, white 58%);
+  --color-button-secondary-bg: color-mix(in srgb, var(--secondary) 78%, var(--card) 22%);
+  --color-button-secondary-bg-hover: color-mix(in srgb, var(--secondary) 86%, var(--card) 14%);
+  --color-button-secondary-bg-active: color-mix(in srgb, var(--secondary) 92%, var(--card) 8%);
+  --color-button-secondary-fg: var(--button-subtle-foreground);
+  --color-button-secondary-fg-hover: var(--button-subtle-foreground-hover);
+  --color-button-secondary-border: color-mix(in srgb, var(--button-subtle-foreground) 72%, var(--card) 28%);
+  --color-button-outline-bg: color-mix(in srgb, var(--card) 92%, var(--secondary) 8%);
+  --color-button-outline-bg-hover: color-mix(in srgb, var(--card) 70%, var(--secondary) 30%);
+  --color-button-outline-bg-active: color-mix(in srgb, var(--card) 56%, var(--secondary) 44%);
+  --color-button-outline-fg: var(--button-subtle-foreground);
+  --color-button-outline-fg-hover: var(--button-subtle-foreground-hover);
+  --color-button-outline-border: color-mix(in srgb, var(--button-subtle-foreground) 76%, var(--card) 24%);
+  --color-button-ghost-bg: color-mix(in srgb, var(--secondary) 56%, var(--card) 44%);
+  --color-button-ghost-bg-hover: color-mix(in srgb, var(--secondary) 70%, var(--card) 30%);
+  --color-button-ghost-bg-active: color-mix(in srgb, var(--secondary) 82%, var(--card) 18%);
+  --color-button-ghost-fg: var(--button-subtle-foreground);
+  --color-button-ghost-fg-hover: var(--button-subtle-foreground-hover);
+  --color-button-ghost-border: color-mix(in srgb, var(--button-subtle-foreground) 76%, var(--card) 24%);
+  --color-button-link-fg: var(--button-subtle-foreground);
+  --color-button-link-fg-hover: var(--button-subtle-foreground-hover);
+  --color-button-link-underline: color-mix(in srgb, var(--button-subtle-foreground) 46%, transparent);
+  --color-button-destructive-bg: var(--danger);
+  --color-button-destructive-bg-hover: color-mix(in srgb, var(--danger) 90%, #0f172a 10%);
+  --color-button-destructive-bg-active: color-mix(in srgb, var(--danger) 82%, #0f172a 18%);
+  --color-button-destructive-fg: var(--danger-foreground);
+  --color-button-destructive-border: color-mix(in srgb, var(--foreground) 58%, var(--danger) 42%);
+  --color-button-destructive-shadow: color-mix(in srgb, var(--danger) 42%, transparent);
+  --color-button-success-bg: var(--success);
+  --color-button-success-bg-hover: color-mix(in srgb, var(--success) 90%, #0f172a 10%);
+  --color-button-success-bg-active: color-mix(in srgb, var(--success) 82%, #0f172a 18%);
+  --color-button-success-fg: var(--success-foreground);
+  --color-button-success-border: color-mix(in srgb, var(--foreground) 58%, var(--success) 42%);
+  --color-button-success-shadow: color-mix(in srgb, var(--success) 42%, transparent);
+  --color-button-disabled-bg: color-mix(in srgb, var(--muted) 78%, var(--card) 22%);
+  --color-button-disabled-fg: color-mix(in srgb, var(--foreground) 82%, var(--muted-foreground) 18%);
+  --color-button-disabled-border: color-mix(in srgb, var(--muted-foreground) 76%, var(--card) 24%);
+  --color-button-selected-bg: var(--color-button-primary-bg);
+  --color-button-selected-fg: var(--color-button-primary-fg);
+  --color-button-selected-border: var(--color-button-primary-border);
+
+  /* Premium dashboard surfaces */
+  --premium-gradient: radial-gradient(120% 120% at 20% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    radial-gradient(120% 120% at 80% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
+    linear-gradient(180deg, #f9fbff 0%, #f3f6ff 100%);
+  --premium-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 248, 255, 0.96) 100%);
+  --premium-topbar-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 248, 255, 0.94) 100%);
+  --premium-input-gradient: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--card) 92%, white 8%),
+    color-mix(in srgb, var(--card) 70%, var(--background) 30%)
+  );
+  --premium-button-gradient: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--card) 88%, white 12%),
+    color-mix(in srgb, var(--card) 62%, var(--background) 38%)
+  );
+  --premium-border: rgba(15, 23, 42, 0.08);
+  --premium-shadow: 0 18px 45px -30px rgba(15, 23, 42, 0.45);
+  --premium-glow: 0 0 0 1px rgba(255, 255, 255, 0.75);
+  --premium-hairline: rgba(255, 255, 255, 0.65);
+  --premium-inset: 0 1px 0 rgba(255, 255, 255, 0.45) inset;
+
+  /* Chart defaults */
+  --chart-1: #2563eb;
+  --chart-2: #f97316;
+  --chart-3: #16a34a;
+  --chart-4: #facc15;
+  --chart-5: #8b5cf6;
+}
+
+.dark {
+  --background: #121d2b;
+  --foreground: #fff7ef;
+  --primary: #e09643;
+  --primary-foreground: #1a2430;
+  --secondary: #203044;
+  --secondary-foreground: #fff7ef;
+  --accent: #2a3c53;
+  --accent-foreground: #fff7ef;
+  --muted: #172433;
+  --muted-foreground: #c7b6a5;
+  --card: #182536;
+  --card-foreground: #fff7ef;
+  --popover: #182536;
+  --popover-foreground: #fff7ef;
+  --destructive: #ff7d71;
+  --border: #26374c;
+  --input: #26374c;
+  --ring: #e09643;
+  --chart-1: #e09643;
+  --chart-2: #d43c33;
+  --chart-3: #85b38b;
+  --chart-4: #f3c97c;
+  --chart-5: #c66b64;
+  --sidebar: #121d2b;
+  --sidebar-foreground: #fff7ef;
+  --sidebar-primary: #e09643;
+  --sidebar-primary-foreground: #1a2430;
+  --sidebar-accent: #1b293a;
+  --sidebar-accent-foreground: #fff7ef;
+  --sidebar-border: #26374c;
+  --sidebar-ring: #e09643;
+  --button-subtle-foreground: #fff7ef;
+  --button-subtle-foreground-hover: #ffffff;
+  --button-subtle-border: rgba(255, 247, 239, 0.18);
+  --button-solid-outline: rgba(255, 226, 191, 0.28);
+}
+
+@keyframes landing-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes landing-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes landing-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.landing-fade-up {
+  animation: landing-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-fade-in {
+  animation: landing-fade-in 0.85s ease both;
+}
+
+.landing-float {
+  animation: landing-float 8s ease-in-out infinite;
+}
+
+.landing-alt-font {
+  font-family: var(--font-landing), var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.landing-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.landing-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.landing-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.landing-delay-4 {
+  animation-delay: 0.32s;
+}
+
+.landing-delay-5 {
+  animation-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-fade-up,
+  .landing-fade-in,
+  .landing-float {
+    animation: none;
+  }
+}
