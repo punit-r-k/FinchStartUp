@@ -1,11 +1,58 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { Facebook, Globe, Instagram, Mail, Share2, Twitter } from "lucide-react";
 
 import HeroDotAnimation from "@/components/site/hero-dot-animation";
+import {
+  SocialActionButton,
+  SocialTooltip,
+  type SocialItem,
+} from "@/components/ui/social-media";
 import { brand, foundingTeam } from "@/config/brand";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const encodedWebsite = encodeURIComponent(brand.website);
+  const encodedShareText = encodeURIComponent(`${brand.name} | ${brand.tagline}`);
+  const socialLinks: SocialItem[] = [
+    {
+      href: brand.website,
+      ariaLabel: `${brand.name} website`,
+      tooltip: "Website",
+      color: "#63A8FF",
+      icon: Globe,
+    },
+    {
+      href: `mailto:${brand.primaryEmail}`,
+      ariaLabel: `${brand.name} email`,
+      tooltip: "Email",
+      color: "#E09643",
+      icon: Mail,
+    },
+    {
+      href: "https://www.instagram.com/",
+      ariaLabel: `${brand.name} on Instagram`,
+      tooltip: "Instagram",
+      color: "#E4405F",
+      icon: Instagram,
+    },
+    {
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedWebsite}`,
+      ariaLabel: `Share ${brand.name} on Facebook`,
+      tooltip: "Facebook",
+      color: "#1877F2",
+      icon: Facebook,
+    },
+    {
+      href: `https://twitter.com/intent/tweet?url=${encodedWebsite}&text=${encodedShareText}`,
+      ariaLabel: `Share ${brand.name} on Twitter`,
+      tooltip: "Twitter",
+      color: "#1DA1F2",
+      icon: Twitter,
+    },
+  ];
 
   const columns = [
     {
@@ -25,6 +72,28 @@ export function Footer() {
       ],
     },
   ] as const;
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${brand.name} | ${brand.tagline}`,
+          text: brand.blurb,
+          url: brand.website,
+        });
+        return;
+      }
+
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(brand.website);
+        return;
+      }
+
+      window.open(brand.website, "_blank", "noopener,noreferrer");
+    } catch {
+      // Ignore canceled shares and clipboard failures.
+    }
+  };
 
   return (
     <footer
@@ -111,6 +180,16 @@ export function Footer() {
                     </a>
                   </article>
                 ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <SocialTooltip items={socialLinks} className="justify-start" />
+                <SocialActionButton
+                  ariaLabel={`Share ${brand.name}`}
+                  tooltip="Share"
+                  icon={Share2}
+                  color="#D43C33"
+                  onClick={handleShare}
+                />
               </div>
             </div>
           </div>
