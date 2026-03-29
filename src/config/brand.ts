@@ -24,7 +24,7 @@ export const brand = {
   shortName: "Finch",
   tagline: "Fewer Applications. More Interviews.",
   heroHeadline: "Turn Applications Into Interviews.",
-  logo: "/brand/logo-full.svg",
+  logo: "/brand/logo-light.png",
   logomark: "/brand/logo-mark.png",
   blurb:
     "Finch is an intentional internship platform that helps students replace mass-application chaos with a faster, smarter path to interviews.",

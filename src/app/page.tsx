@@ -135,7 +135,7 @@ export default function Home() {
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#f7f2ec_0%,#f6efe8_48%,#fff9f5_100%)] text-[#24364C]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.28),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.16),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.36),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.07),transparent_32%)]" />
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-4 pb-18 pt-10 sm:px-6 lg:pb-22 lg:pt-16">
+        <div className="mx-auto max-w-6xl px-4 pb-18 pt-28 sm:px-6 sm:pt-32 lg:pb-22 lg:pt-36">
           <div className="relative z-10 text-center">
             <div className="mx-auto max-w-5xl">
               <h1 className="text-5xl font-semibold tracking-tight text-[#24364C] sm:text-6xl lg:text-7xl">

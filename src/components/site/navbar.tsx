@@ -48,7 +48,8 @@ export function Navbar() {
     <header
       role="banner"
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-all duration-300",
+        "top-0 z-50 w-full border-b transition-all duration-300",
+        isLandingPage ? "fixed" : "sticky",
         overlayMode
           ? "border-transparent bg-transparent text-white backdrop-blur-none supports-[backdrop-filter]:bg-transparent"
           : "border-white/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
