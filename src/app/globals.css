@@ -99,6 +99,19 @@ html {
   scroll-behavior: smooth;
 }
 
+html.theme-mode-animating body,
+html.theme-mode-animating body *,
+html.theme-mode-animating body *::before,
+html.theme-mode-animating body *::after {
+  transition:
+    background-color 280ms var(--ease-smooth),
+    border-color 280ms var(--ease-smooth),
+    color 280ms var(--ease-smooth),
+    box-shadow 280ms var(--ease-smooth),
+    fill 280ms var(--ease-smooth),
+    stroke 280ms var(--ease-smooth);
+}
+
 /* Auth page */
 .auth-shell {
   background-image: radial-gradient(
@@ -324,6 +337,51 @@ html {
     0 18px 36px -30px rgba(36, 54, 76, 0.28);
 }
 
+.dark .button-landing-primary {
+  border-color: rgba(255, 228, 203, 0.34);
+  background: linear-gradient(135deg, #d43c33 0%, #df6a3f 54%, #e09643 100%);
+  color: #fff7ef;
+  box-shadow: 0 20px 44px -28px rgba(212, 60, 51, 0.34);
+}
+
+.dark .button-landing-primary:hover {
+  background: linear-gradient(135deg, #de473d 0%, #e67848 54%, #e7a455 100%);
+}
+
+.dark .button-landing-primary:active {
+  background: linear-gradient(135deg, #bf342c 0%, #cb5a37 54%, #c8883d 100%);
+}
+
+.dark .button-landing-primary:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(18, 29, 43, 0.96),
+    0 0 0 5px rgba(224, 150, 67, 0.36),
+    0 24px 48px -28px rgba(212, 60, 51, 0.42);
+}
+
+.dark .button-landing-secondary {
+  border-color: rgba(255, 247, 239, 0.14);
+  background: linear-gradient(180deg, rgba(30, 45, 65, 0.94) 0%, rgba(24, 37, 54, 0.92) 100%);
+  color: #fff7ef;
+  box-shadow: 0 16px 34px -28px rgba(0, 0, 0, 0.34);
+}
+
+.dark .button-landing-secondary:hover {
+  background: linear-gradient(180deg, rgba(36, 54, 76, 0.96) 0%, rgba(27, 43, 62, 0.94) 100%);
+  color: #ffffff;
+}
+
+.dark .button-landing-secondary:active {
+  background: linear-gradient(180deg, rgba(25, 39, 56, 0.98) 0%, rgba(20, 32, 47, 0.95) 100%);
+}
+
+.dark .button-landing-secondary:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(18, 29, 43, 0.96),
+    0 0 0 5px rgba(224, 150, 67, 0.28),
+    0 18px 36px -30px rgba(0, 0, 0, 0.38);
+}
+
 .auth-button-secondary:disabled {
   cursor: not-allowed;
   color: var(--color-button-disabled-fg);
@@ -408,4 +466,13 @@ html {
   border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
   background: color-mix(in srgb, var(--card) 82%, transparent);
   padding: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-mode-animating body,
+  html.theme-mode-animating body *,
+  html.theme-mode-animating body *::before,
+  html.theme-mode-animating body *::after {
+    transition: none !important;
+  }
 }

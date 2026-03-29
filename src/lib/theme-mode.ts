@@ -1,6 +1,10 @@
 export type ThemeMode = "light" | "dark";
 
 export const THEME_STORAGE_KEY = "finch-theme-mode";
+const THEME_TRANSITION_CLASS = "theme-mode-animating";
+const THEME_TRANSITION_DURATION_MS = 280;
+
+let themeTransitionTimeoutId: number | null = null;
 
 export function getPreferredThemeMode(): ThemeMode {
   if (typeof window === "undefined") {
@@ -16,12 +20,27 @@ export function getPreferredThemeMode(): ThemeMode {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function applyThemeMode(themeMode: ThemeMode) {
+export function applyThemeMode(themeMode: ThemeMode, options?: { animate?: boolean }) {
   if (typeof document === "undefined") {
     return;
   }
 
   const root = document.documentElement;
+  const shouldAnimate = options?.animate ?? true;
+
+  if (shouldAnimate) {
+    root.classList.add(THEME_TRANSITION_CLASS);
+
+    if (themeTransitionTimeoutId) {
+      window.clearTimeout(themeTransitionTimeoutId);
+    }
+
+    themeTransitionTimeoutId = window.setTimeout(() => {
+      root.classList.remove(THEME_TRANSITION_CLASS);
+      themeTransitionTimeoutId = null;
+    }, THEME_TRANSITION_DURATION_MS);
+  }
+
   root.classList.toggle("dark", themeMode === "dark");
   root.dataset.themeMode = themeMode;
   root.style.colorScheme = themeMode;

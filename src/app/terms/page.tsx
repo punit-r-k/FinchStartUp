@@ -39,11 +39,11 @@ export default function TermsPage() {
       title="Terms of use"
       subtitle="These terms govern use of the Finch public site and related direct communication channels."
       actions={LEGAL_PAGE_ACTIONS}
-      className="bg-[linear-gradient(180deg,#f7f2ec_0%,#fffaf6_100%)]"
+      className="bg-[linear-gradient(180deg,#f7f2ec_0%,#fffaf6_100%)] transition-colors duration-300 dark:bg-[linear-gradient(180deg,#121d2b_0%,#172433_52%,#1b2b3f_100%)]"
     >
       {TERMS.map((section) => (
         <PageSection key={section.title} title={section.title}>
-          <ul className="space-y-2 rounded-[10px] border border-[#24364C]/10 bg-white/80 p-6 text-sm text-[#24364C]/74 shadow-[0_18px_48px_rgba(36,54,76,0.08)]">
+          <ul className="space-y-2 rounded-[10px] border border-[#24364C]/10 bg-white/80 p-6 text-sm text-[#24364C]/74 shadow-[0_18px_48px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:text-[#fff7ef]/74 dark:shadow-[0_18px_48px_rgba(0,0,0,0.24)]">
             {section.points.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -51,9 +51,9 @@ export default function TermsPage() {
         </PageSection>
       ))}
       <PageSection title="Questions">
-        <div className="rounded-[10px] border border-[#24364C]/10 bg-white/80 p-6 text-sm text-[#24364C]/74 shadow-[0_18px_48px_rgba(36,54,76,0.08)]">
+        <div className="rounded-[10px] border border-[#24364C]/10 bg-white/80 p-6 text-sm text-[#24364C]/74 shadow-[0_18px_48px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:text-[#fff7ef]/74 dark:shadow-[0_18px_48px_rgba(0,0,0,0.24)]">
           Questions about these terms can be directed to{" "}
-          <a href="mailto:nicanor14gz@tamu.edu" className="font-medium text-[#24364C]">
+          <a href="mailto:nicanor14gz@tamu.edu" className="font-medium text-[#24364C] dark:text-[#fff7ef]">
             nicanor14gz@tamu.edu
           </a>
           .

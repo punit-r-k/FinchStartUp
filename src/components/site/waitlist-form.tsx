@@ -72,7 +72,7 @@ export default function WaitlistForm({
           "min-h-12 w-full rounded-md px-5 text-sm outline-none transition",
           tone === "dark"
             ? "border border-white/14 bg-white/10 text-white shadow-[0_14px_38px_rgba(0,0,0,0.16)] placeholder:text-white/45 focus:border-white/28 focus:bg-white/14 focus:shadow-[0_18px_42px_rgba(0,0,0,0.22)]"
-            : "border border-[#24364C]/15 bg-white/80 text-[#24364C] shadow-[0_14px_38px_rgba(36,54,76,0.08)] placeholder:text-[#24364C]/42 focus:border-[#D43C33]/50 focus:bg-white focus:shadow-[0_18px_42px_rgba(212,60,51,0.18)]",
+            : "border border-[#24364C]/15 bg-white/80 text-[#24364C] shadow-[0_14px_38px_rgba(36,54,76,0.08)] placeholder:text-[#24364C]/42 focus:border-[#D43C33]/50 focus:bg-white focus:shadow-[0_18px_42px_rgba(212,60,51,0.18)] dark:border-white/10 dark:bg-[#182536]/82 dark:text-[#fff7ef] dark:shadow-[0_18px_42px_rgba(0,0,0,0.24)] dark:placeholder:text-[#fff7ef]/42 dark:focus:border-[#E09643]/52 dark:focus:bg-[#1c2b3f] dark:focus:shadow-[0_18px_42px_rgba(224,150,67,0.16)]",
           compact ? "sm:max-w-xs" : fullWidth ? "sm:max-w-none sm:flex-1" : "sm:max-w-sm"
         )}
       />
@@ -91,7 +91,7 @@ export default function WaitlistForm({
             ? "text-[#D43C33]"
             : tone === "dark"
             ? "text-white/70"
-            : "text-[#24364C]/70"
+            : "text-[#24364C]/70 dark:text-[#fff7ef]/70"
         )}
       >
         {status === "invalid"

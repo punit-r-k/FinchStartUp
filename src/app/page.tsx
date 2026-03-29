@@ -7,10 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import WaitlistForm from "@/components/site/waitlist-form";
-import ShareSiteButton from "@/components/site/share-site-button";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
 
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 const STATS = [
   {
     value: "50-200",
-    label: "applications students often send in one cycle",
+    label: "applications students often send in one recruiting cycle",
   },
   {
     value: "< 60s",
@@ -38,52 +37,43 @@ const STATS = [
   },
 ] as const;
 
-const STEPS = [
+const WORKFLOW_STEPS = [
   {
-    title: "Build a stronger starting point",
+    title: "Start from one search prompt",
     description:
-      "Finch analyzes your background and turns scattered experience into a richer candidate profile.",
+      "Paste a LinkedIn search URL or role keywords into Finch, choose how many jobs to run, and launch a cleaner search workflow.",
   },
   {
-    title: "Target higher-signal internships",
+    title: "Track generation in one place",
     description:
-      "Instead of spraying applications everywhere, Finch helps you focus on roles that fit your profile and interview odds.",
+      "Your dashboard keeps generation status, completed applications, and history inside a single thread instead of scattered tabs.",
   },
   {
-    title: "Tailor in seconds",
+    title: "Review and apply from cards",
     description:
-      "Role-specific resumes, cover letters, and autofill steps compress repetitive work without flattening quality.",
-  },
-  {
-    title: "Stop before submit",
-    description:
-      "Finch brings you to the final review page so you keep full control over what gets sent.",
+      "Each generated application includes ATS score, resume, cover letter, and direct apply link in one clean review surface.",
   },
 ] as const;
 
-const FEATURE_CARDS = [
+const FEATURE_SHOWCASE = [
   {
-    title: "Intentional over volume",
-    body: "Finch is built for students who want stronger interview probability, not more busywork.",
+    eyebrow: "AI resume builder",
+    title: "Craft a tailored resume for every role",
+    body: "Generate role-specific resume versions, improve ATS alignment, and close keyword gaps before you submit.",
     image: "/finch/product-1.png",
   },
   {
-    title: "Speed without quality loss",
-    body: "Turn a 20 to 30 minute application routine into a focused, fast workflow that still feels tailored.",
+    eyebrow: "Job matches",
+    title: "Get matched to relevant jobs, personalized to you",
+    body: "Set your preferences once and discover higher-fit opportunities instead of searching endlessly across job boards.",
     image: "/finch/product-2.png",
   },
   {
-    title: "One workflow, multiple ATS paths",
-    body: "Finch is designed around the platforms students actually encounter during internship recruiting.",
+    eyebrow: "Autofill applications",
+    title: "Autofill repetitive job application questions",
+    body: "Install the Finch browser extension and finish repetitive forms in seconds with profile-aware answers.",
     image: "/finch/product-3.png",
   },
-] as const;
-
-const DIFFERENTIATORS = [
-  "Not a blind auto-apply tool",
-  "Built around interview probability instead of application count",
-  "Student-first language, pacing, and workflows",
-  "Warm product design with clear hierarchy and visible control",
 ] as const;
 
 const FAQ = [
@@ -114,80 +104,60 @@ const FAQ = [
   },
 ] as const;
 
-const PRIMARY_ACTIONS = [
-  {
-    title: "Sign up",
-    description: "Join the Finch waitlist for early access and founder follow-up.",
-    href: `mailto:${brand.primaryEmail}?subject=Finch%20waitlist`,
-    label: "Join waitlist",
-    variant: "landingPrimary" as const,
-  },
-  {
-    title: "Purchase / subscribe",
-    description: "See the pricing preview and subscription direction for the product.",
-    href: "/product#pricing",
-    label: "View pricing",
-    variant: "outline" as const,
-  },
-  {
-    title: "Download app / Chrome extension",
-    description: "Request extension access while the student launch is still rolling out.",
-    href: `mailto:${brand.primaryEmail}?subject=Finch%20Chrome%20extension%20access`,
-    label: "Request extension access",
-    variant: "outline" as const,
-  },
-  {
-    title: "Follow on social",
-    description: "Social channels are opening soon, but launch updates already route through Finch directly.",
-    href: `mailto:${brand.primaryEmail}?subject=Finch%20social%20updates`,
-    label: "Get launch updates",
-    variant: "outline" as const,
-  },
-] as const;
-
 export default function Home() {
   return (
-    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#f7f2ec_0%,#f6efe8_48%,#fff9f5_100%)] text-[#24364C]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.28),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.16),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.36),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.07),transparent_32%)]" />
+    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#f7f2ec_0%,#f6efe8_48%,#fff9f5_100%)] text-[#24364C] transition-colors duration-300 dark:bg-[linear-gradient(180deg,#121d2b_0%,#172433_46%,#1b2b3f_100%)] dark:text-[#fff7ef]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.28),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.16),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.36),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.07),transparent_32%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.16),transparent_24%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.14),transparent_22%),radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.05),transparent_26%),radial-gradient(circle_at_bottom,rgba(224,150,67,0.08),transparent_32%)]" />
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 pb-18 pt-28 sm:px-6 sm:pt-32 lg:pb-22 lg:pt-36">
-          <div className="relative z-10 text-center">
-            <div className="mx-auto max-w-5xl">
-              <h1 className="text-5xl font-semibold tracking-tight text-[#24364C] sm:text-6xl lg:text-7xl">
-                <span className="font-display block leading-[0.95]">Turn Applications Into</span>
+          <div className="relative z-10">
+            <div className="mx-auto max-w-5xl text-center">
+              <h1 className="text-5xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-6xl lg:text-7xl">
+                <span className="font-display block leading-[0.95]">Apply Smarter.</span>
                 <span className="font-display mt-2 block bg-[linear-gradient(135deg,#24364C_0%,#D43C33_48%,#E09643_100%)] bg-clip-text text-transparent">
-                  Interviews.
+                  Land Roles With Confidence.
                 </span>
               </h1>
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#24364C]/76 dark:text-[#fff7ef]/76 sm:text-xl">
+                Finch helps students move from search to submit with ATS-ready
+                resumes, better-fit job matching, and a cleaner workflow across
+                the internship tools they already face.
+              </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
+                  <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
+                    Join waitlist
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-md px-7">
+                  <Link href="/product">
+                    Explore the product
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#24364C]/76 sm:text-xl">
-              Finch helps students replace mass-application chaos with a faster,
-              smarter recruiting system. Target stronger roles, tailor your
-              materials, and move from applications to interviews with more
-              signal and less grind.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
-                <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
-                  Join waitlist
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-md px-7">
-                <Link href="/product">
-                  Explore the product
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-[12px] border border-white/70 bg-white/72 p-4 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/72 dark:shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-5">
+              <div className="relative aspect-[1.9] overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] dark:border-white/10 dark:bg-[#152234]">
+                <Image
+                  src="/finch/product-5.png"
+                  alt="Finch workflow preview"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 960px"
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
-            <div className="mx-auto mt-10 max-w-6xl rounded-[12px] border border-white/70 bg-white/72 p-4 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur sm:p-5">
+            <div className="mx-auto mt-6 max-w-6xl rounded-[12px] border border-white/70 bg-white/72 p-4 shadow-[0_28px_90px_rgba(36,54,76,0.1)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/72 dark:shadow-[0_30px_90px_rgba(0,0,0,0.28)] sm:p-5">
               <div className="grid gap-4 lg:grid-cols-4">
                 {STATS.map((stat) => (
                   <article
                     key={stat.value}
-                    className="rounded-[10px] border border-[#24364C]/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,241,233,0.9))] p-6 text-left shadow-[0_18px_48px_rgba(36,54,76,0.08)]"
+                    className="rounded-[10px] border border-[#24364C]/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,241,233,0.9))] p-6 text-left shadow-[0_18px_48px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(30,45,65,0.96),rgba(22,35,51,0.92))] dark:shadow-[0_18px_48px_rgba(0,0,0,0.24)]"
                   >
-                    <p className="font-display text-3xl text-[#24364C]">{stat.value}</p>
-                    <p className="mt-3 text-sm leading-6 text-[#24364C]/70">{stat.label}</p>
+                    <p className="font-display text-3xl text-[#24364C] dark:text-[#fff7ef]">{stat.value}</p>
+                    <p className="mt-3 text-sm leading-6 text-[#24364C]/70 dark:text-[#fff7ef]/70">{stat.label}</p>
                   </article>
                 ))}
               </div>
@@ -198,144 +168,134 @@ export default function Home() {
 
       <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-18 sm:px-6">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
+          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62">
             How it works
           </span>
-          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
-            Built for students who want a better process, not more noise.
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
+            A cleaner workflow from search to apply.
           </h2>
-          <p className="mt-4 text-base leading-7 text-[#24364C]/72">
-            Finch compresses the repetitive parts of internship recruiting while
-            keeping user control, tailored materials, and stronger role
-            selection at the center.
+          <p className="mt-4 text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+            Finch keeps the workflow simple: find stronger roles, generate the
+            right materials, and review each application before anything gets
+            submitted.
           </p>
         </div>
-        <div className="mt-10 grid gap-5 lg:grid-cols-4">
-          {STEPS.map((step, index) => (
-            <article
-              key={step.title}
-              className="rounded-[10px] border border-white/70 bg-white/74 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)]"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/46">
-                Step {index + 1}
-              </p>
-              <h3 className="mt-3 text-xl font-semibold text-[#24364C]">{step.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#24364C]/72">{step.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-12 rounded-[14px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(247,239,231,0.92))] p-8 shadow-[0_28px_80px_rgba(36,54,76,0.1)] backdrop-blur lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:p-10">
-            <div>
-              <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
-                Why Finch
-              </span>
-              <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
-                Conversion-focused product design with a student-first backbone.
-              </h2>
-              <p className="mt-4 text-base leading-7 text-[#24364C]/72">
-                Finch balances clean SaaS structure with selective glass surfaces,
-                warm contrast, and clear calls to action. The interface is meant
-                to feel credible, fast, and optimistic without drifting into
-                cold enterprise language.
-              </p>
-              <div className="mt-8 grid gap-3">
-                {DIFFERENTIATORS.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-3 rounded-[8px] border border-[#24364C]/10 bg-white/76 px-4 py-3 text-sm text-[#24364C]/78 shadow-[0_12px_32px_rgba(36,54,76,0.06)]"
-                  >
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#E09643]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild variant="landingPrimary" className="rounded-md">
-                  <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
-                    Join waitlist
-                  </a>
-                </Button>
-                <Button asChild variant="outline" className="rounded-md">
-                  <Link href="/about">Meet the team</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {FEATURE_CARDS.map((card) => (
-                <article
-                  key={card.title}
-                  className="overflow-hidden rounded-[10px] border border-white/70 bg-white/80 shadow-[0_20px_56px_rgba(36,54,76,0.1)] backdrop-blur"
-                >
-                  <div className="relative aspect-[0.82]">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="(max-width: 767px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-semibold text-[#24364C]">{card.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[#24364C]/72">{card.body}</p>
-                  </div>
-                </article>
-              ))}
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div className="grid gap-4">
+            {WORKFLOW_STEPS.map((step, index) => (
+              <article
+                key={step.title}
+                className="rounded-[10px] border border-white/70 bg-white/74 p-6 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
+                  Step {index + 1}
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold text-[#24364C] dark:text-[#fff7ef]">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+                  {step.description}
+                </p>
+              </article>
+            ))}
+          </div>
+          <div className="overflow-hidden rounded-[12px] border border-white/70 bg-white/74 p-4 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]">
+            <div className="relative aspect-[1.08] overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] dark:border-white/10 dark:bg-[#152234]">
+              <Image
+                src="/finch/product-4.png"
+                alt="Finch application workflow"
+                fill
+                sizes="(max-width: 1023px) 100vw, 52vw"
+                className="object-cover object-top"
+              />
             </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-18 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <div>
-            <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
-              Product shape
-            </span>
-            <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
-              The recruiting stack is messy. Finch makes the workflow coherent.
-            </h2>
-            <div className="mt-8 grid gap-4">
-              {[
-                {
-                  title: "Chrome extension workflow",
-                  text: "Finch detects supported application opportunities and prepares the right materials at the moment they are needed.",
-                },
-                {
-                  title: "AI-assisted tailoring",
-                  text: "The product helps generate stronger, role-specific documents while preserving user control and review.",
-                },
-                {
-                  title: "Outcome-driven guidance",
-                  text: "Every major workflow centers on precision, fit, and interview probability rather than vanity metrics.",
-                },
-              ].map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[10px] border border-[#24364C]/10 bg-white/80 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.08)]"
-                >
-                  <h3 className="text-lg font-semibold text-[#24364C]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-[#24364C]/72">{item.text}</p>
-                </article>
-              ))}
-            </div>
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62">
+            Feature showcase
+          </span>
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
+            Everything you need to land your next role.
+          </h2>
+          <p className="mt-4 text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+            Finch brings the strongest parts of the workflow together so
+            students can search, tailor, and apply without building a mess of
+            disconnected tools.
+          </p>
+        </div>
+        <div className="mt-10 space-y-6">
+          {FEATURE_SHOWCASE.map((feature, index) => (
+            <article
+              key={feature.title}
+              className="grid gap-6 rounded-[12px] border border-white/70 bg-white/76 p-5 shadow-[0_22px_60px_rgba(36,54,76,0.08)] backdrop-blur dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)] lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:p-6"
+            >
+              <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
+                <span className="inline-flex items-center rounded-md border border-[#D43C33]/14 bg-[#fff6f1] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33] dark:border-[#E09643]/16 dark:bg-[#233247] dark:text-[#E09643]">
+                  {feature.eyebrow}
+                </span>
+                <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-[2rem]">
+                  {feature.title}
+                </h3>
+                <p className="mt-4 max-w-xl text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+                  {feature.body}
+                </p>
+              </div>
+              <div className={index % 2 === 1 ? "lg:order-1" : undefined}>
+                <div className="overflow-hidden rounded-[10px] border border-[#24364C]/10 bg-[#f3ede5] p-3 dark:border-white/10 dark:bg-[#152234]">
+                  <div className="relative aspect-[1.32] overflow-hidden rounded-[8px]">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      sizes="(max-width: 1023px) 100vw, 56vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+        <div className="rounded-[12px] border border-white/70 bg-white/78 p-8 text-center shadow-[0_24px_70px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_24px_70px_rgba(0,0,0,0.26)] sm:p-10">
+          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62">
+            Pricing
+          </span>
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
+            Pricing is WIP.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
+            We are finalizing plan details and billing. For now, Finch is free
+            while early access opens in stages.
+          </p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button asChild variant="outline" className="rounded-md">
+              <Link href="/product#pricing">See pricing status</Link>
+            </Button>
+            <Button asChild variant="landingPrimary" className="rounded-md">
+              <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
+                Request early access
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
       <section id="faq" className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
+          <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62">
             FAQ
           </span>
-          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
+          <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
             Questions students ask before they commit to a new workflow.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#24364C]/72">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#24364C]/72 dark:text-[#fff7ef]/72">
             Finch is positioned as a smarter recruiting system, not another tool
             that tells students to do more work.
           </p>
@@ -345,12 +305,12 @@ export default function Home() {
             <AccordionItem
               key={item.question}
               value={`faq-${index}`}
-              className="rounded-[10px] border border-white/70 bg-white/78 px-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)]"
+              className="rounded-[10px] border border-white/70 bg-white/78 px-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_16px_44px_rgba(0,0,0,0.24)]"
             >
-              <AccordionTrigger className="text-left text-base font-semibold text-[#24364C] hover:no-underline">
+              <AccordionTrigger className="text-left text-base font-semibold text-[#24364C] hover:no-underline dark:text-[#fff7ef]">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="pb-5 text-sm leading-6 text-[#24364C]/72">
+              <AccordionContent className="pb-5 text-sm leading-6 text-[#24364C]/72 dark:text-[#fff7ef]/72">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
@@ -358,74 +318,25 @@ export default function Home() {
         </Accordion>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-        <div className="rounded-[12px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,245,236,0.9))] p-8 shadow-[0_28px_84px_rgba(36,54,76,0.08)]">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
-              Primary actions
-            </span>
-            <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl">
-              The website now covers Finch&apos;s primary calls to action.
-            </h2>
-            <p className="mt-4 text-base leading-7 text-[#24364C]/72">
-              Stop guessing and start applying with strategy. Finch helps you target the right
-              internships, tailor your applications intelligently, and increase your interview rate
-              without spending more time applying.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-            {PRIMARY_ACTIONS.map((action) => (
-              <article
-                key={action.title}
-                className="flex h-full flex-col rounded-[10px] border border-[#24364C]/10 bg-white/82 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)]"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33]">
-                  {action.title}
-                </p>
-                <p className="mt-3 flex-1 text-sm leading-6 text-[#24364C]/72">
-                  {action.description}
-                </p>
-                <Button asChild variant={action.variant} className="mt-5 rounded-md">
-                  {action.href.startsWith("mailto:") ? (
-                    <a href={action.href}>{action.label}</a>
-                  ) : (
-                    <Link href={action.href}>{action.label}</Link>
-                  )}
-                </Button>
-              </article>
-            ))}
-            <article className="flex h-full flex-col rounded-[10px] border border-[#24364C]/10 bg-white/82 p-5 shadow-[0_16px_44px_rgba(36,54,76,0.07)] md:col-span-2 xl:col-span-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D43C33]">
-                Share with friends
-              </p>
-              <p className="mt-3 flex-1 text-sm leading-6 text-[#24364C]/72">
-                Share Finch with classmates or friends who are tired of low-signal application volume.
-              </p>
-              <ShareSiteButton className="mt-5 rounded-md" />
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section id="waitlist" className="pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="rounded-[12px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,245,236,0.94))] p-8 shadow-[0_30px_90px_rgba(36,54,76,0.12)] lg:p-12 xl:p-16">
+          <div className="rounded-[12px] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,245,236,0.94))] p-8 shadow-[0_30px_90px_rgba(36,54,76,0.12)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(24,37,54,0.96),rgba(18,29,43,0.98))] dark:shadow-[0_30px_90px_rgba(0,0,0,0.32)] lg:p-12 xl:p-16">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-14">
               <div className="max-w-5xl">
-                <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66">
+                <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62">
                   Get early access
                 </span>
-                <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] sm:text-5xl xl:text-6xl">
+                <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl xl:text-6xl">
                   Stop guessing and start applying with strategy.
                 </h2>
-                <p className="mt-5 max-w-4xl text-lg leading-8 text-[#24364C]/74">
+                <p className="mt-5 max-w-4xl text-lg leading-8 text-[#24364C]/74 dark:text-[#fff7ef]/74">
                   Join the Finch waitlist and talk directly with the founding
                   team about early access, product demos, or university
                   partnership conversations.
                 </p>
               </div>
-              <div className="rounded-[10px] border border-white/80 bg-white/78 p-6 shadow-[0_20px_54px_rgba(36,54,76,0.08)] sm:p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#24364C]/54">
+              <div className="rounded-[10px] border border-white/80 bg-white/78 p-6 shadow-[0_20px_54px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-white/6 dark:shadow-[0_20px_54px_rgba(0,0,0,0.24)] sm:p-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#24364C]/54 dark:text-[#fff7ef]/54">
                   Join the waitlist
                 </p>
                 <div className="mt-5">
@@ -435,7 +346,7 @@ export default function Home() {
                     className="w-full"
                   />
                 </div>
-                <p className="mt-5 text-sm leading-6 text-[#24364C]/66">
+                <p className="mt-5 text-sm leading-6 text-[#24364C]/66 dark:text-[#fff7ef]/66">
                   Early access requests route directly to the Finch team.
                 </p>
               </div>

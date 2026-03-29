@@ -6,10 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function NotFound() {
   return (
     <section className="mx-auto max-w-xl px-4 py-20 text-center">
-      <Card className="rounded-[10px] border-[#24364C]/10 bg-white/80 shadow-[0_24px_70px_rgba(36,54,76,0.08)]">
+      <Card className="rounded-[10px] border-[#24364C]/10 bg-white/80 shadow-[0_24px_70px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
         <CardContent className="p-8">
-          <h1 className="text-3xl font-semibold text-[#24364C]">Page not found</h1>
-          <p className="mt-3 text-sm leading-6 text-[#24364C]/70">
+          <h1 className="text-3xl font-semibold text-[#24364C] dark:text-[#fff7ef]">Page not found</h1>
+          <p className="mt-3 text-sm leading-6 text-[#24364C]/70 dark:text-[#fff7ef]/70">
             Finch could not find the page you requested. The public site may
             have been simplified as part of the rebrand.
           </p>

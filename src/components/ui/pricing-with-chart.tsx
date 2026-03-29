@@ -22,17 +22,17 @@ export function PricingWithChart() {
   return (
     <div className="mx-auto max-w-6xl">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight text-[#24364C] lg:text-5xl">
+        <h2 className="text-4xl font-extrabold tracking-tight text-[#24364C] dark:text-[#fff7ef] lg:text-5xl">
           Pricing that Scales with You
         </h2>
-        <p className="mt-4 text-sm text-[#24364C]/70 md:text-base">
+        <p className="mt-4 text-sm text-[#24364C]/70 dark:text-[#fff7ef]/70 md:text-base">
           Choose the right plan to unlock powerful tools and insights.
           Transparent pricing built for modern teams.
         </p>
       </div>
 
-      <div className="grid rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(249,243,236,0.92))] text-[#24364C] shadow-[0_20px_56px_rgba(36,54,76,0.08)] md:grid-cols-6">
-        <div className="flex flex-col justify-between border-b border-[#24364C]/10 p-6 md:col-span-2 md:border-r md:border-b-0">
+      <div className="grid rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(249,243,236,0.92))] text-[#24364C] shadow-[0_20px_56px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(24,37,54,0.94),rgba(18,29,43,0.96))] dark:text-[#fff7ef] dark:shadow-[0_20px_56px_rgba(0,0,0,0.28)] md:grid-cols-6">
+        <div className="flex flex-col justify-between border-b border-[#24364C]/10 p-6 dark:border-white/10 md:col-span-2 md:border-r md:border-b-0">
           <div className="space-y-4">
             <div>
               <h3 className="inline rounded-[2px] p-1 text-xl font-semibold">
@@ -41,18 +41,18 @@ export function PricingWithChart() {
               <span className="my-3 block text-3xl font-bold text-[#D43C33]">
                 $0
               </span>
-              <p className="text-sm text-[#24364C]/72">
+              <p className="text-sm text-[#24364C]/72 dark:text-[#fff7ef]/72">
                 Best for testing and understanding
               </p>
             </div>
 
-            <Button asChild variant="outline" className="w-full border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C]">
+            <Button asChild variant="outline" className="w-full border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C] dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef] dark:hover:bg-white/10 dark:hover:text-white">
               <a href="#waitlist">Get Started</a>
             </Button>
 
-            <div className="my-6 h-px w-full bg-[#24364C]/12" />
+            <div className="my-6 h-px w-full bg-[#24364C]/12 dark:bg-white/10" />
 
-            <ul className="space-y-3 text-sm text-[#24364C]/74">
+            <ul className="space-y-3 text-sm text-[#24364C]/74 dark:text-[#fff7ef]/74">
               {[
                 "Basic analytics dashboard",
                 "5GB cloud storage",
@@ -74,18 +74,18 @@ export function PricingWithChart() {
               <span className="my-3 block text-3xl font-bold text-[#D43C33]">
                 $299
               </span>
-              <p className="text-sm text-[#24364C]/72">
+              <p className="text-sm text-[#24364C]/72 dark:text-[#fff7ef]/72">
                 Perfect for small businesses and startups
               </p>
             </div>
-            <div className="h-fit w-full rounded-[10px] border border-[#24364C]/10 bg-white/72 p-2 shadow-[0_14px_36px_rgba(36,54,76,0.06)]">
+            <div className="h-fit w-full rounded-[10px] border border-[#24364C]/10 bg-white/72 p-2 shadow-[0_14px_36px_rgba(36,54,76,0.06)] dark:border-white/10 dark:bg-white/6 dark:shadow-[0_14px_36px_rgba(0,0,0,0.22)]">
               <InterestChart />
             </div>
           </div>
 
           <div className="relative w-full">
             <div className="text-sm font-medium">Everything in Free plus:</div>
-            <ul className="mt-4 space-y-3 text-sm text-[#24364C]/74">
+            <ul className="mt-4 space-y-3 text-sm text-[#24364C]/74 dark:text-[#fff7ef]/74">
               {[
                 "Unlimited access to all tools",
                 "Priority customer support",
@@ -112,7 +112,7 @@ export function PricingWithChart() {
               >
                 <a href="#waitlist">Get Started</a>
               </Button>
-              <Button asChild variant="outline" className="border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C]">
+              <Button asChild variant="outline" className="border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C] dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef] dark:hover:bg-white/10 dark:hover:text-white">
                 <a href="#waitlist">Start free trial</a>
               </Button>
             </div>
@@ -147,10 +147,10 @@ function InterestChart() {
   } satisfies ChartConfig;
 
   return (
-    <Card className="gap-0 border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(250,245,239,0.96))] py-0 shadow-none">
-      <CardHeader className="space-y-0 border-b border-[#24364C]/10 p-3">
-        <CardTitle className="text-lg text-[#24364C]">Plan Popularity</CardTitle>
-        <CardDescription className="text-xs text-[#24364C]/66">
+    <Card className="gap-0 border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(250,245,239,0.96))] py-0 shadow-none dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(30,45,65,0.96),rgba(22,35,51,0.94))]">
+      <CardHeader className="space-y-0 border-b border-[#24364C]/10 p-3 dark:border-white/10">
+        <CardTitle className="text-lg text-[#24364C] dark:text-[#fff7ef]">Plan Popularity</CardTitle>
+        <CardDescription className="text-xs text-[#24364C]/66 dark:text-[#fff7ef]/62">
           Monthly trend of people considering this plan.
         </CardDescription>
       </CardHeader>
