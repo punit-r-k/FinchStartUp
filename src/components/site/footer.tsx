@@ -117,13 +117,7 @@ export function Footer() {
                 priority
               />
             </Link>
-<<<<<<< Updated upstream
             <p className="max-w-sm text-sm leading-6 text-white/74">{brand.blurb}</p>
-            <HeroDotAnimation className="w-full max-w-[176px]" lightText />
-=======
-            <p className="max-w-md text-sm text-white/72">{brand.blurb}</p>
-            <p className="font-display text-2xl text-white">{brand.heroHeadline}</p>
->>>>>>> Stashed changes
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {columns.map((column) => (

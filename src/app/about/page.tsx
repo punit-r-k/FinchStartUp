@@ -250,7 +250,7 @@ export default function AboutPage() {
           {foundingTeam.map((member) => (
             <article
               key={member.email}
-              className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-[10px] border border-white/80 bg-white/84 shadow-[0_24px_66px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_24px_66px_rgba(0,0,0,0.26)]"
+              className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-[10px] border border-[#24364C]/14 bg-white/84 shadow-[0_24px_66px_rgba(36,54,76,0.08)] dark:border-white/14 dark:bg-[#182536]/78 dark:shadow-[0_24px_66px_rgba(0,0,0,0.26)]"
             >
               <div className="relative aspect-[2/3] bg-[#eadfd3]">
                 <Image

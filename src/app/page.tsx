@@ -8,11 +8,8 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
 
-<<<<<<< Updated upstream
 import ShareSiteButton from "@/components/site/share-site-button";
-=======
 import HeroDotAnimation from "@/components/site/hero-dot-animation";
->>>>>>> Stashed changes
 import WaitlistForm from "@/components/site/waitlist-form";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
