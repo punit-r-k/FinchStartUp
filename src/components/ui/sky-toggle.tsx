@@ -144,7 +144,7 @@ const StyledWrapper = styled.div<{ $size: number }>`
   }
 
   .theme-switch__checkbox:focus-visible + .theme-switch__container {
-    outline: 2px solid var(--ring, #d43c33);
+    outline: 2px solid var(--ring, #58cc02);
     outline-offset: 2px;
   }
 

@@ -61,47 +61,49 @@ export default function AboutPage() {
   return (
     <div className="bg-[linear-gradient(180deg,#f7f2ec_0%,#fffaf6_46%,#f9f2ea_100%)] text-[#24364C] transition-colors duration-300 dark:bg-[linear-gradient(180deg,#121d2b_0%,#172433_46%,#1b2b3f_100%)] dark:text-[#fff7ef]">
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.22),transparent_34%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.14),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.08),transparent_40%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(224,150,67,0.14),transparent_28%),radial-gradient(circle_at_top_right,rgba(212,60,51,0.14),transparent_24%),radial-gradient(circle_at_bottom,rgba(255,255,255,0.04),transparent_34%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(88,204,2,0.14),transparent_34%),radial-gradient(circle_at_top_right,rgba(232,64,28,0.14),transparent_28%),radial-gradient(circle_at_bottom,rgba(36,54,76,0.08),transparent_40%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(88,204,2,0.1),transparent_28%),radial-gradient(circle_at_top_right,rgba(232,64,28,0.14),transparent_24%),radial-gradient(circle_at_bottom,rgba(255,255,255,0.04),transparent_34%)]" />
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-18">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div className="max-w-4xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <div>
               <span className="inline-flex items-center rounded-md border border-[#24364C]/10 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#24364C]/66 shadow-[0_14px_34px_rgba(36,54,76,0.06)] dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef]/62 dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
                 About Finch
               </span>
-              <h1 className="mt-6 text-5xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-6xl">
-                A strategic alternative to the mass-application grind.
+              <h1 className="mt-4 text-5xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-6xl">
+                <span className="block">A strategic alternative.</span>
+                <span className="block">To the mass-application grind.</span>
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-[#24364C]/80 dark:text-[#fff7ef]/78 sm:text-xl">
-                Finch helps college students replace repetitive internship
-                applications with a faster, sharper recruiting system. It is
-                built for students who want better-fit roles, stronger
-                materials, and a more credible path to interviews.
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#24364C]/80 dark:text-[#fff7ef]/88 sm:text-xl">
+                Finch helps students move from search to submit with stronger
+                materials, better-fit matching, and a simpler ATS workflow.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap justify-center gap-3">
                 <Button asChild variant="landingPrimary" size="lg" className="rounded-md px-7">
+                  <Link href="/product">See product</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-md px-7">
                   <a href={`mailto:${brand.primaryEmail}?subject=Finch%20waitlist`}>
                     Join waitlist
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-md px-7">
-                  <Link href="/product">See product</Link>
-                </Button>
               </div>
             </div>
-            <div className="grid gap-4">
-              {HERO_POINTS.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[10px] border border-white/80 bg-white/78 p-6 shadow-[0_22px_56px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_56px_rgba(0,0,0,0.24)]"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
-                    {item.title}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/76">{item.body}</p>
-                </article>
-              ))}
-            </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+        <div className="grid gap-4 md:grid-cols-3">
+          {HERO_POINTS.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-[10px] border border-white/80 bg-white/78 p-6 shadow-[0_22px_56px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_56px_rgba(0,0,0,0.24)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2D8214] dark:text-[#58CC02]">
+                {item.title}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/86">{item.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -114,7 +116,7 @@ export default function AboutPage() {
             <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
               What Finch is building
             </h2>
-            <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/72">
+            <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/84">
               Finch exists to make internship recruiting more intentional for
               students. This section explains what the company is trying to
               improve and what success should look like over time.
@@ -134,7 +136,7 @@ export default function AboutPage() {
                   className={
                     card.tone === "dark"
                       ? "text-xs font-semibold uppercase tracking-[0.24em] text-white/54"
-                      : "text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]"
+                      : "text-xs font-semibold uppercase tracking-[0.24em] text-[#2D8214] dark:text-[#58CC02]"
                   }
                 >
                   {card.subtitle}
@@ -151,8 +153,8 @@ export default function AboutPage() {
                 <p
                   className={
                     card.tone === "dark"
-                      ? "mt-4 text-sm leading-7 text-white/78"
-                      : "mt-4 text-sm leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/72"
+                      ? "mt-4 text-sm leading-7 text-white/86"
+                      : "mt-4 text-sm leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/84"
                   }
                 >
                   {card.body}
@@ -173,10 +175,10 @@ export default function AboutPage() {
             </h2>
             <div className="mt-6 grid gap-5 lg:grid-cols-2">
               <article className="rounded-[10px] border border-[#24364C]/10 bg-[#f9f3ec] p-6 dark:border-white/10 dark:bg-white/6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2D8214] dark:text-[#58CC02]">
                   Problem
                 </p>
-                <p className="mt-3 text-sm leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/76">
+                <p className="mt-3 text-sm leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/86">
                   Students are still told to apply more, network more, and keep
                   pushing volume even when those actions do not improve fit,
                   quality, or interview odds.
@@ -193,7 +195,7 @@ export default function AboutPage() {
                 </p>
               </article>
             </div>
-            <p className="mt-6 max-w-3xl text-sm leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/72">
+            <p className="mt-6 max-w-3xl text-sm leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/84">
               The brand is meant to feel modern, warm, and credible. It should
               never sound like generic career advice, and it should never push
               students toward more noise just to feel active.
@@ -209,7 +211,7 @@ export default function AboutPage() {
           <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
             How Finch should feel to users
           </h2>
-          <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/72">
+          <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/84">
             The product should feel distinct, credible, and warm. Each value
             below defines how the brand should show up in product decisions and
             communication.
@@ -221,10 +223,10 @@ export default function AboutPage() {
               key={value.title}
               className="flex min-h-[220px] flex-col rounded-[10px] border border-white/80 bg-white/82 p-7 shadow-[0_22px_60px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#D43C33]">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2D8214] dark:text-[#58CC02]">
                 {value.title}
               </p>
-              <p className="mt-4 text-base leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/76">{value.body}</p>
+              <p className="mt-4 text-base leading-7 text-[#24364C]/78 dark:text-[#fff7ef]/86">{value.body}</p>
             </article>
           ))}
         </div>
@@ -238,7 +240,7 @@ export default function AboutPage() {
           <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#24364C] dark:text-[#fff7ef] sm:text-5xl">
             Meet the team building Finch
           </h2>
-          <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/72">
+          <p className="mt-4 text-base leading-7 text-[#24364C]/76 dark:text-[#fff7ef]/84">
             The founding team is building Finch from direct exposure to the
             internship search and the friction students face inside modern
             recruiting systems.
@@ -248,9 +250,9 @@ export default function AboutPage() {
           {foundingTeam.map((member) => (
             <article
               key={member.email}
-              className="overflow-hidden rounded-[10px] border border-white/80 bg-white/84 shadow-[0_24px_66px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_24px_66px_rgba(0,0,0,0.26)]"
+              className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-[10px] border border-white/80 bg-white/84 shadow-[0_24px_66px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#182536]/78 dark:shadow-[0_24px_66px_rgba(0,0,0,0.26)]"
             >
-              <div className="relative aspect-[0.94] bg-[#eadfd3]">
+              <div className="relative aspect-[2/3] bg-[#eadfd3]">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -259,12 +261,12 @@ export default function AboutPage() {
                   className="object-cover object-top"
                 />
               </div>
-              <div className="flex min-h-[168px] flex-col p-6">
+              <div className="flex min-h-[146px] flex-col p-5">
                 <h3 className="text-xl font-semibold text-[#24364C] dark:text-[#fff7ef]">{member.name}</h3>
-                <p className="mt-1 text-sm font-medium text-[#D43C33]">{member.role}</p>
+                <p className="mt-1 text-sm font-medium text-[#E8401C]">{member.role}</p>
                 <a
                   href={`mailto:${member.email}`}
-                  className="mt-auto pt-5 text-sm text-[#24364C]/78 transition hover:text-[#24364C] dark:text-[#fff7ef]/76 dark:hover:text-white"
+                  className="mt-auto pt-5 text-sm text-[#24364C]/78 transition hover:text-[#24364C] dark:text-[#fff7ef]/86 dark:hover:text-white"
                 >
                   {member.email}
                 </a>

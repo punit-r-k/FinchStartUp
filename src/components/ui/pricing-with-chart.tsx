@@ -1,9 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { CheckCircleIcon } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -22,27 +22,27 @@ export function PricingWithChart() {
   return (
     <div className="mx-auto max-w-6xl">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight text-[#24364C] dark:text-[#fff7ef] lg:text-5xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-[#24364C] dark:text-[#fff7ef] lg:text-5xl">
           Pricing that Scales with You
-        </h2>
-        <p className="mt-4 text-sm text-[#24364C]/70 dark:text-[#fff7ef]/70 md:text-base">
+        </h1>
+        <p className="mt-4 text-sm text-[#24364C]/72 dark:text-[#fff7ef]/72 md:text-base">
           Choose the right plan to unlock powerful tools and insights.
           Transparent pricing built for modern teams.
         </p>
       </div>
 
-      <div className="grid rounded-[12px] border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(249,243,236,0.92))] text-[#24364C] shadow-[0_20px_56px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(24,37,54,0.94),rgba(18,29,43,0.96))] dark:text-[#fff7ef] dark:shadow-[0_20px_56px_rgba(0,0,0,0.28)] md:grid-cols-6">
+      <div className="grid rounded-xl border border-[#24364C]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(249,243,236,0.92))] text-[#24364C] shadow-[0_20px_56px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(24,37,54,0.94),rgba(18,29,43,0.96))] dark:text-[#fff7ef] dark:shadow-[0_20px_56px_rgba(0,0,0,0.28)] md:grid-cols-6">
         <div className="flex flex-col justify-between border-b border-[#24364C]/10 p-6 dark:border-white/10 md:col-span-2 md:border-r md:border-b-0">
           <div className="space-y-4">
             <div>
-              <h3 className="inline rounded-[2px] p-1 text-xl font-semibold">
-                Free
-              </h3>
-              <span className="my-3 block text-3xl font-bold text-[#D43C33]">
+              <h2 className="backdrop-blur-2 inline rounded-[2px] p-1 text-xl font-semibold">
+                Freemium
+              </h2>
+              <span className="my-3 block text-3xl font-bold text-[#E8401C]">
                 $0
               </span>
               <p className="text-sm text-[#24364C]/72 dark:text-[#fff7ef]/72">
-                Best for testing and understanding
+                Best for testing & understanding
               </p>
             </div>
 
@@ -54,12 +54,12 @@ export function PricingWithChart() {
 
             <ul className="space-y-3 text-sm text-[#24364C]/74 dark:text-[#fff7ef]/74">
               {[
-                "Basic analytics dashboard",
-                "5GB cloud storage",
-                "Email and chat support",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-[#D43C33]" />
+                "Basic Analytics Dashboard",
+                "5GB Cloud Storage",
+                "Email & Chat Support",
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <CheckCircleIcon className="h-4 w-4 text-[#E8401C]" />
                   {item}
                 </li>
               ))}
@@ -70,15 +70,15 @@ export function PricingWithChart() {
         <div className="z-10 grid gap-8 overflow-hidden p-6 md:col-span-4 lg:grid-cols-2">
           <div className="flex flex-col justify-between space-y-6">
             <div>
-              <h3 className="text-xl font-semibold">Pro Monthly Package</h3>
-              <span className="my-3 block text-3xl font-bold text-[#D43C33]">
+              <h2 className="text-xl font-semibold">Premium</h2>
+              <span className="my-3 block text-3xl font-bold text-[#E8401C]">
                 $299
               </span>
               <p className="text-sm text-[#24364C]/72 dark:text-[#fff7ef]/72">
-                Perfect for small businesses and startups
+                Perfect for small businesses & startups
               </p>
             </div>
-            <div className="h-fit w-full rounded-[10px] border border-[#24364C]/10 bg-white/72 p-2 shadow-[0_14px_36px_rgba(36,54,76,0.06)] dark:border-white/10 dark:bg-white/6 dark:shadow-[0_14px_36px_rgba(0,0,0,0.22)]">
+            <div className="h-fit w-full rounded-lg border border-[#24364C]/10 bg-white/72 p-2 shadow-[0_14px_36px_rgba(36,54,76,0.06)] dark:border-white/10 dark:bg-white/6 dark:shadow-[0_14px_36px_rgba(0,0,0,0.22)]">
               <InterestChart />
             </div>
           </div>
@@ -97,19 +97,16 @@ export function PricingWithChart() {
                 "Role-based access control and permissions",
                 "Offline access with automatic sync",
                 "Regular updates with new features",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-[#E09643]" />
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <CheckCircleIcon className="h-4 w-4 text-[#58CC02]" />
                   {item}
                 </li>
               ))}
             </ul>
 
             <div className="mt-10 grid w-full grid-cols-2 gap-2.5">
-              <Button
-                asChild
-                variant="landingPrimary"
-              >
+              <Button asChild variant="landingPrimary">
                 <a href="#waitlist">Get Started</a>
               </Button>
               <Button asChild variant="outline" className="border-[#24364C]/18 bg-white/72 text-[#24364C] hover:bg-white hover:text-[#24364C] dark:border-white/10 dark:bg-white/6 dark:text-[#fff7ef] dark:hover:bg-white/10 dark:hover:text-white">
@@ -142,7 +139,7 @@ function InterestChart() {
   const chartConfig = {
     interest: {
       label: "Interest",
-      color: "#E09643",
+      color: "var(--chart-4)",
     },
   } satisfies ChartConfig;
 

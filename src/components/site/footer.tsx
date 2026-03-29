@@ -28,7 +28,7 @@ export function Footer() {
       href: `mailto:${brand.primaryEmail}`,
       ariaLabel: `${brand.name} email`,
       tooltip: "Email",
-      color: "#E09643",
+      color: "#58CC02",
       icon: Mail,
     },
     {
@@ -100,9 +100,9 @@ export function Footer() {
       className="border-t border-[#24364C]/10 bg-[#24364C] text-white"
       aria-label="Site footer"
     >
-      <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="space-y-6">
+      <div className="mx-auto max-w-6xl px-4 py-6 md:px-6">
+        <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div className="space-y-3">
             <Link
               href="/"
               className="inline-flex items-center gap-3 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)]"
@@ -111,24 +111,23 @@ export function Footer() {
               <Image
                 src={brand.logo}
                 alt={`${brand.name} logo`}
-                width={156}
-                height={48}
-                className="h-auto w-[156px]"
-                style={{ width: "156px", height: "auto" }}
+                width={138}
+                height={42}
+                className="h-auto w-[138px]"
+                style={{ width: "138px", height: "auto" }}
                 priority
               />
             </Link>
-            <p className="max-w-md text-sm text-white/72">{brand.blurb}</p>
-            <p className="font-display text-2xl text-white">{brand.heroHeadline}</p>
-            <HeroDotAnimation className="w-full max-w-[280px]" lightText />
+            <p className="max-w-sm text-sm leading-6 text-white/74">{brand.blurb}</p>
+            <HeroDotAnimation className="w-full max-w-[176px]" lightText />
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {columns.map((column) => (
-              <div key={column.heading} className="space-y-3">
+              <div key={column.heading} className="space-y-2">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
                   {column.heading}
                 </h3>
-                <ul className="space-y-2 text-sm text-white/74">
+                <ul className="space-y-1.5 text-sm text-white/74">
                   {column.links.map((item) => (
                     <li key={item.href}>
                       <Link
@@ -142,11 +141,11 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
                 Contact
               </h3>
-              <div className="space-y-2 text-sm text-white/74">
+              <div className="space-y-1.5 text-sm text-white/74">
                 <p>
                   <a href={`mailto:${brand.primaryEmail}`} className="transition hover:text-white">
                     {brand.primaryEmail}
@@ -160,41 +159,38 @@ export function Footer() {
                 <p>College Station, Texas</p>
               </div>
             </div>
-            <div className="space-y-4 sm:col-span-2 lg:col-span-3">
+            <div className="space-y-2 sm:col-span-2 lg:col-span-3">
               <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
                 Founding team
               </h3>
-              <div className="grid gap-4 lg:grid-cols-3">
+              <div className="grid gap-x-4 gap-y-2 md:grid-cols-3">
                 {foundingTeam.map((member) => (
-                  <article
-                    key={member.email}
-                    className="rounded-[8px] border border-white/10 bg-white/6 p-4 text-sm text-white/72"
-                  >
+                  <div key={member.email} className="text-sm leading-5 text-white/74">
                     <p className="font-semibold text-white">{member.name}</p>
-                    <p className="mt-1 text-[#E09643]">{member.role}</p>
+                    <p className="mt-0.5 text-[#58CC02]">{member.role}</p>
                     <a
                       href={`mailto:${member.email}`}
-                      className="mt-3 inline-block transition hover:text-white"
+                      className="mt-0.5 inline-block transition hover:text-white"
                     >
                       {member.email}
                     </a>
-                  </article>
+                  </div>
                 ))}
               </div>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
                 <SocialTooltip items={socialLinks} className="justify-start" />
                 <SocialActionButton
                   ariaLabel={`Share ${brand.name}`}
                   tooltip="Share"
                   icon={Share2}
-                  color="#D43C33"
+                  color="#E8401C"
                   onClick={handleShare}
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+        <div className="mt-5 flex flex-col gap-2 border-t border-white/10 pt-3 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
           <p>
             {"\u00a9"} {year} {brand.name}. All rights reserved.
           </p>

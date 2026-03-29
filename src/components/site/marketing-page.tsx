@@ -17,6 +17,7 @@ type MarketingPageProps = {
   actions?: readonly PageAction[];
   children: ReactNode;
   className?: string;
+  centeredHero?: boolean;
 };
 
 export function MarketingPage({
@@ -26,11 +27,12 @@ export function MarketingPage({
   actions,
   children,
   className,
+  centeredHero = false,
 }: MarketingPageProps) {
   return (
     <section className={cn("bg-background text-foreground", className)}>
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
-        <header className="space-y-4">
+        <header className={cn("space-y-4", centeredHero && "mx-auto max-w-4xl text-center")}>
           {kicker ? (
             <span className="inline-flex items-center rounded-md border border-border/60 bg-card/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               {kicker}
@@ -39,11 +41,11 @@ export function MarketingPage({
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             {title}
           </h1>
-          <p className="max-w-2xl text-base text-muted-foreground">
+          <p className={cn("text-base text-muted-foreground", centeredHero ? "mx-auto max-w-3xl" : "max-w-2xl")}>
             {subtitle}
           </p>
           {actions?.length ? (
-            <div className="flex flex-wrap gap-3">
+            <div className={cn("flex flex-wrap gap-3", centeredHero && "justify-center")}>
               {actions.map((action) => (
                 <Button
                   key={action.href}

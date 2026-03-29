@@ -110,7 +110,7 @@ export function Navbar() {
                   className={cn(
                     "rounded-md px-5 py-2.5 text-base font-semibold transition",
                     isActive
-                      ? "bg-[#24364C] text-white shadow-[0_18px_38px_rgba(36,54,76,0.18)] dark:bg-[#E09643] dark:text-[#121d2b] dark:shadow-[0_18px_38px_rgba(224,150,67,0.24)]"
+                      ? "bg-[#24364C] text-white shadow-[0_18px_38px_rgba(36,54,76,0.18)] dark:bg-[#24364C] dark:text-white dark:shadow-[0_18px_38px_rgba(88,204,2,0.18)]"
                       : "text-[#24364C]/74 hover:bg-white/70 hover:text-[#24364C] dark:text-[#fff7ef]/78 dark:hover:bg-white/8 dark:hover:text-white"
                   )}
                 >

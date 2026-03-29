@@ -282,24 +282,24 @@ html.theme-mode-animating body *::after {
 
 .button-landing-primary {
   border-color: rgba(255, 233, 221, 0.9);
-  background: linear-gradient(135deg, #d43c33 0%, #e35b3f 48%, #e09643 100%);
+  background: linear-gradient(135deg, #e8401c 0%, #ea6531 52%, #f09a3e 100%);
   color: #fffaf6;
-  box-shadow: 0 20px 44px -26px rgba(212, 60, 51, 0.42);
+  box-shadow: 0 20px 44px -26px rgba(232, 64, 28, 0.24);
 }
 
 .button-landing-primary:hover {
-  background: linear-gradient(135deg, #dd493e 0%, #ea6949 48%, #e8a252 100%);
+  background: linear-gradient(135deg, #ef4f28 0%, #f07c40 52%, #f3aa52 100%);
 }
 
 .button-landing-primary:active {
-  background: linear-gradient(135deg, #bd322a 0%, #d04d35 48%, #cf8639 100%);
+  background: linear-gradient(135deg, #cf3617 0%, #d2602f 52%, #dc8732 100%);
 }
 
 .button-landing-primary:focus-visible {
   box-shadow:
     0 0 0 2px rgba(255, 250, 245, 0.98),
-    0 0 0 5px rgba(224, 150, 67, 0.42),
-    0 24px 48px -28px rgba(212, 60, 51, 0.5);
+    0 0 0 5px rgba(88, 204, 2, 0.34),
+    0 24px 48px -28px rgba(88, 204, 2, 0.34);
 }
 
 .button-landing-secondary {
@@ -339,24 +339,24 @@ html.theme-mode-animating body *::after {
 
 .dark .button-landing-primary {
   border-color: rgba(255, 228, 203, 0.34);
-  background: linear-gradient(135deg, #d43c33 0%, #df6a3f 54%, #e09643 100%);
+  background: linear-gradient(135deg, #e8401c 0%, #ed6e34 54%, #f09a3e 100%);
   color: #fff7ef;
-  box-shadow: 0 20px 44px -28px rgba(212, 60, 51, 0.34);
+  box-shadow: 0 20px 44px -28px rgba(232, 64, 28, 0.24);
 }
 
 .dark .button-landing-primary:hover {
-  background: linear-gradient(135deg, #de473d 0%, #e67848 54%, #e7a455 100%);
+  background: linear-gradient(135deg, #f05029 0%, #f27f43 54%, #f4ab54 100%);
 }
 
 .dark .button-landing-primary:active {
-  background: linear-gradient(135deg, #bf342c 0%, #cb5a37 54%, #c8883d 100%);
+  background: linear-gradient(135deg, #ca3818 0%, #d4622f 54%, #db8833 100%);
 }
 
 .dark .button-landing-primary:focus-visible {
   box-shadow:
     0 0 0 2px rgba(18, 29, 43, 0.96),
-    0 0 0 5px rgba(224, 150, 67, 0.36),
-    0 24px 48px -28px rgba(212, 60, 51, 0.42);
+    0 0 0 5px rgba(88, 204, 2, 0.3),
+    0 24px 48px -28px rgba(88, 204, 2, 0.28);
 }
 
 .dark .button-landing-secondary {
