@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { brand } from "@/config/brand";
+import { THEME_STORAGE_KEY, applyThemeMode, getPreferredThemeMode, type ThemeMode } from "@/lib/theme-mode";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -21,6 +22,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
   const isLandingPage = pathname === "/";
 
   useEffect(() => {
@@ -37,12 +39,28 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    const initialThemeMode = getPreferredThemeMode();
+    setThemeMode(initialThemeMode);
+    applyThemeMode(initialThemeMode);
+  }, []);
+
+  useEffect(() => {
     setMobileOpen(false);
     setIsAtTop(window.scrollY <= 16);
   }, [pathname]);
 
   const overlayMode = isLandingPage && isAtTop && !mobileOpen;
   const faqHref = pathname === "/" ? "#faq" : "/#faq";
+  const themeToggleLabel = themeMode === "dark" ? "Switch to light mode" : "Switch to dark mode";
+
+  const toggleThemeMode = () => {
+    setThemeMode((currentThemeMode) => {
+      const nextThemeMode = currentThemeMode === "dark" ? "light" : "dark";
+      window.localStorage.setItem(THEME_STORAGE_KEY, nextThemeMode);
+      applyThemeMode(nextThemeMode);
+      return nextThemeMode;
+    });
+  };
 
   return (
     <header
@@ -52,7 +70,7 @@ export function Navbar() {
         isLandingPage ? "fixed" : "sticky",
         overlayMode
           ? "border-transparent bg-transparent text-white backdrop-blur-none supports-[backdrop-filter]:bg-transparent"
-          : "border-white/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+          : "border-white/70 bg-white/80 text-[#24364C] backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-white/10 dark:bg-[#101a27]/80 dark:text-[#fff7ef] dark:supports-[backdrop-filter]:bg-[#101a27]/72"
       )}
       aria-label="Site header"
     >
@@ -91,8 +109,8 @@ export function Navbar() {
                   className={cn(
                     "rounded-md px-5 py-2.5 text-base font-semibold transition",
                     isActive
-                      ? "bg-[#24364C] text-white shadow-[0_18px_38px_rgba(36,54,76,0.18)]"
-                      : "text-[#24364C]/74 hover:bg-white/70 hover:text-[#24364C]"
+                      ? "bg-[#24364C] text-white shadow-[0_18px_38px_rgba(36,54,76,0.18)] dark:bg-[#E09643] dark:text-[#121d2b] dark:shadow-[0_18px_38px_rgba(224,150,67,0.24)]"
+                      : "text-[#24364C]/74 hover:bg-white/70 hover:text-[#24364C] dark:text-[#fff7ef]/78 dark:hover:bg-white/8 dark:hover:text-white"
                   )}
                 >
                   {link.label}
@@ -102,6 +120,31 @@ export function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#24364C]/12 bg-white/80 p-2.5 text-[#24364C] shadow-[0_12px_28px_rgba(36,54,76,0.08)] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ring)] dark:border-white/10 dark:bg-[#152234] dark:text-[#fff7ef] dark:hover:bg-[#1b2c43]"
+            onClick={toggleThemeMode}
+            aria-label={themeToggleLabel}
+            aria-pressed={themeMode === "dark"}
+            title={themeToggleLabel}
+          >
+            <span className="relative block h-5 w-5">
+              <Image
+                src="/nightMode.png"
+                alt=""
+                fill
+                className="object-contain dark:hidden"
+                sizes="20px"
+              />
+              <Image
+                src="/dayMode.png"
+                alt=""
+                fill
+                className="hidden object-contain dark:block"
+                sizes="20px"
+              />
+            </span>
+          </button>
           <Button asChild variant="outline" className="hidden rounded-md px-5 py-2.5 text-base sm:inline-flex">
             <Link href="/product">See product</Link>
           </Button>
@@ -116,7 +159,7 @@ export function Navbar() {
           </Button>
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md border border-[#24364C]/12 bg-white/80 p-2.5 text-[#24364C] lg:hidden"
+            className="inline-flex items-center justify-center rounded-md border border-[#24364C]/12 bg-white/80 p-2.5 text-[#24364C] dark:border-white/10 dark:bg-[#152234] dark:text-[#fff7ef] lg:hidden"
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={mobileOpen}
@@ -130,7 +173,7 @@ export function Navbar() {
         </div>
       </nav>
       {mobileOpen ? (
-        <div className="border-t border-[#24364C]/10 bg-[#f7f2ec] lg:hidden">
+        <div className="border-t border-[#24364C]/10 bg-[#f7f2ec] dark:border-white/10 dark:bg-[#111a2a] lg:hidden">
           <div className="mx-auto grid max-w-6xl gap-3 px-4 py-5 sm:px-6">
             {NAV_LINKS.map((link) => {
               const href = link.href === "/#faq" ? faqHref : link.href;
@@ -140,7 +183,7 @@ export function Navbar() {
                   key={link.href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg border border-[#24364C]/10 bg-white/80 px-5 py-3.5 text-base font-semibold text-[#24364C] shadow-[0_14px_34px_rgba(36,54,76,0.08)]"
+                  className="rounded-lg border border-[#24364C]/10 bg-white/80 px-5 py-3.5 text-base font-semibold text-[#24364C] shadow-[0_14px_34px_rgba(36,54,76,0.08)] dark:border-white/10 dark:bg-[#192638] dark:text-[#fff7ef] dark:shadow-[0_14px_34px_rgba(0,0,0,0.2)]"
                 >
                   {link.label}
                 </Link>

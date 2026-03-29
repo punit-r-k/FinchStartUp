@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist_Mono, Nunito, Quicksand } from "next/font/google";
+import Script from "next/script";
 
 import "./globals.css";
 import "@/styles/theme.css";
@@ -8,6 +9,7 @@ import "@/styles/theme.css";
 import Footer from "@/components/site/footer";
 import Navbar from "@/components/site/navbar";
 import { brand } from "@/config/brand";
+import { themeModeBootstrapScript } from "@/lib/theme-mode";
 import { getConfiguredSiteOrigin } from "@/lib/site-url";
 
 const sans = Nunito({
@@ -74,10 +76,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`${sans.variable} ${mono.variable} ${rounded.variable} ${display.variable} flex min-h-dvh flex-col bg-background text-foreground antialiased`}
       >
+        <Script id="theme-mode-init" strategy="beforeInteractive">
+          {themeModeBootstrapScript}
+        </Script>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:shadow"
